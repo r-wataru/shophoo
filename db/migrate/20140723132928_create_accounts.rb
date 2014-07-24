@@ -7,6 +7,9 @@ class CreateAccounts < ActiveRecord::Migration
       t.string :family_name, null: true
       t.string :given_name, null: true
       t.string :password_digest, null: true
+      t.datetime :logged_at, null: true
+      t.boolean :checked, null: false, default: false
+      t.datetime :deleted_at
 
       t.timestamps
     end

@@ -3,6 +3,8 @@ class CreateEmails < ActiveRecord::Migration
     create_table :emails do |t|
       t.references :user, null: false
       t.string :address, null: false
+      t.boolean :main, null: false, default: false
+      t.datetime :deleted_at
       
       t.timestamps
     end

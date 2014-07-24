@@ -1,14 +1,19 @@
 # == Schema Information
 #
-# Table name: manager_roles
+# Table name: histories
 #
 #  id              :integer          not null, primary key
 #  user_id         :integer          not null
 #  organization_id :integer          not null
-#  owner           :boolean          default(FALSE), not null
+#  item_id         :integer          not null
+#  message         :text
 #  created_at      :datetime
 #  updated_at      :datetime
 #
 
-class ManagerRole < ActiveRecord::Base
+# Read about factories at https://github.com/thoughtbot/factory_girl
+
+FactoryGirl.define do
+  factory :history do
+  end
 end
