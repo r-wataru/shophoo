@@ -17,4 +17,29 @@
 #
 
 class Account < ActiveRecord::Base
+  include ActiveModel::ForbiddenAttributesProtection
+
+  validates :screen_name, uniqueness: true, presence: true
+  validates :screen_name, format: { with: /\A[a-z0-9_+-]+\z/ }
+  validate :check_screen_name
+  validate :check_birthday
+
+  private
+  def check_screen_name
+    if screen_name.present?
+      not_path = ["user", "manager", "admin", "organization",
+        "group", "member", "channel", "test", "staff"]
+      if not_path.include?(screen_name)
+        errors.add(:screen_name, :already)
+      end
+    end
+  end
+
+  def check_birthday
+    if birthday.present?
+      if Date.today < birthday
+        errors.add(:birthday, :invalid_date)
+      end
+    end
+  end
 end
