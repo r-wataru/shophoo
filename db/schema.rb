@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140724030831) do
+ActiveRecord::Schema.define(version: 20140725010523) do
 
   create_table "accounts", force: true do |t|
     t.string   "type",                            null: false
@@ -52,6 +52,13 @@ ActiveRecord::Schema.define(version: 20140724030831) do
     t.string   "login_name",                      null: false
     t.string   "password_digest",                 null: false
     t.boolean  "super_user",      default: false, null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "bookmark_folders", force: true do |t|
+    t.integer  "user_id",    null: false
+    t.text     "data"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -118,5 +125,14 @@ ActiveRecord::Schema.define(version: 20140724030831) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "user_tokens", force: true do |t|
+    t.integer  "user_id",    null: false
+    t.string   "value",      null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "user_tokens", ["value"], name: "index_user_tokens_on_value", using: :btree
 
 end

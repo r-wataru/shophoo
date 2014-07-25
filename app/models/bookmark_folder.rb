@@ -1,6 +1,6 @@
 # == Schema Information
 #
-# Table name: shopping_carts
+# Table name: bookmark_folders
 #
 #  id         :integer          not null, primary key
 #  user_id    :integer          not null
@@ -9,7 +9,7 @@
 #  updated_at :datetime
 #
 
-class ShoppingCart < ActiveRecord::Base
+class BookmarkFolder < ActiveRecord::Base
   belongs_to :user
 
   def data=(hash)
@@ -25,7 +25,7 @@ class ShoppingCart < ActiveRecord::Base
     items = data[:items] || Array.new
     data_array = self.data[:items].map{|a| a[:id]} if self.data[:items]
     if (data_array && !data_array.include?(object.id)) || items.blank?
-      items << { type: object.class.to_s, id: object.id, price: object.price }
+      items << { type: object.class.to_s, id: object.id }
       self.data = data.merge(items: items)
     end
   end
@@ -34,6 +34,13 @@ class ShoppingCart < ActiveRecord::Base
     items = data[:items] || Array.new
     items.reject! { |item| item[:type] == object.class.to_s && item[:id] == object.id }
     self.data = data.merge(items: items)
+  end
+
+  def has_item?(object)
+    items = data[:items] || Array.new
+    items.any? do |item|
+      item[:type] == object.class.to_s && item[:id] == object.id
+    end
   end
 
   def number_of_items
@@ -46,22 +53,5 @@ class ShoppingCart < ActiveRecord::Base
 
   def present?
     number_of_items > 0
-  end
-
-  def empty?
-    number_of_items == 0
-  end
-
-  def has_item?(object)
-    items = data[:items] || Array.new
-    items.any? do |item|
-      item[:type] == object.class.to_s && item[:id] == object.id
-    end
-  end
-
-  # 失敗時にshopping_cartの中身を元に戻す
-  def return_shopping_data(data)
-    self.data = { items: data }
-    save!
   end
 end
