@@ -12,4 +12,46 @@
 #
 
 class NewEmail < ActiveRecord::Base
+  include ActiveModel::ForbiddenAttributesProtection
+  include MiniAuth::RandomToken
+
+  VALIDITY_PERIOD_IN_HOURS = 24
+
+  belongs_to :user
+  attr_accessor :password, :add_new_email
+
+  token :confirmation
+
+  validates :address, presence: true, email: true
+  validate :check_password_email
+
+  validate do
+    if address.present? && Email.where(address: address).exists?
+      errors.add(:address, :taken)
+    end
+  end
+
+  before_create do
+    generate_confirmation_token unless confirmation_token
+  end
+
+  def confirm(token)
+    return :invalid unless verify_confirmation_token(token)
+    return :expired if Time.current > created_at + VALIDITY_PERIOD_IN_HOURS * 3600
+    return :used if used
+    self.class.transaction do
+      user.emails << Email.new(address: address, main: !user.emails.active.exists?)
+      update_column(:used, true)
+    end
+    :confirmed
+  end
+  
+  private
+  def check_password_email
+    if add_new_email.present?
+      unless PasswordChecker.verify(self.user, password)
+        errors.add(:password, :wrong_password)
+      end
+    end
+  end
 end

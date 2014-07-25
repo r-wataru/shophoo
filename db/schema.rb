@@ -20,6 +20,8 @@ ActiveRecord::Schema.define(version: 20140725010523) do
     t.string   "family_name"
     t.string   "given_name"
     t.string   "password_digest"
+    t.date     "birthday"
+    t.string   "sex"
     t.datetime "logged_at"
     t.boolean  "checked",         default: false, null: false
     t.datetime "deleted_at"
@@ -42,8 +44,6 @@ ActiveRecord::Schema.define(version: 20140725010523) do
     t.string   "phone"
     t.string   "mobile"
     t.string   "fax"
-    t.date     "birthday"
-    t.string   "sex"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

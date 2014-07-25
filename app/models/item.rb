@@ -15,5 +15,15 @@
 #  updated_at      :datetime
 #
 
+require 'securerandom'
 class Item < ActiveRecord::Base
+  include ActiveModel::ForbiddenAttributesProtection
+
+  belongs_to :organization
+  has_many :histories
+  has_many :history_users, through: :histories, source: :user
+
+  scope :listable, -> { where(listable: true, deleted: false) }
+  scope :active, -> { where(deleted: false) }
+  scope :list_price, -> { where("price is NOT NULL")}
 end

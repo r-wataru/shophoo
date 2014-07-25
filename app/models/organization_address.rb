@@ -21,22 +21,27 @@
 #  updated_at      :datetime
 #
 
-class Address < ActiveRecord::Base
+class OrganizationAddress < Address
   include PhoneNumbers
-  include ActiveModel::ForbiddenAttributesProtection
+  
+  belongs_to :organization
+  validates :organization_id, uniqueness: true
+  
+  validates :address1,
+    zenkaku: { allow_blank: true }
+  validates :address2,
+    zenkaku: { allow_blank: true }
+  validates :city,
+    zenkaku: { allow_blank: true }
+  validates :state,
+    zenkaku: { allow_blank: true }
+  validates :zip_code,
+    hankaku: { allow_blank: true, type: :number },
+    length: { allow_blank: true, is: 7 }
+  
+  phone_columns :phone, :fax, :mobile
 
-  def formatted_zip_code
-    case country_code
-    when 'JP'
-      if md = zip_code.match(/\A(\d{3})(\d{4})\z/)
-        md[1] + '-' + md[2]
-      end
-    else
-      zip_code
-    end
-  end
-
-  def country_name
-    I18n.t(country_code, scope: :countries) if country_code
+  def full_address
+    [ self.state, self.city, self.address1, self.address2 ].compact.join(' ')
   end
 end

@@ -22,7 +22,7 @@ class Organization < Account
   has_many :managers, class_name: "User", through: :manager_roles, source: :user
   has_many :histories
   has_many :owner_roles, ->{ where(owner: true) }, class_name: "ManagerRole"
-  has_many :owning_histories, class_name: "Subscription"
+  has_many :owning_histories, class_name: "History"
   has_one :organization_address
   has_one :image, class_name: "OrganizationImage", dependent: :destroy
   has_one :design, class_name: "DesignImage", dependent: :destroy

@@ -21,9 +21,20 @@
 #  updated_at      :datetime
 #
 
-# Read about factories at https://github.com/thoughtbot/factory_girl
+class WorkAddress < Address
+  belongs_to :user
 
-FactoryGirl.define do
-  factory :address do
-  end
+  validates :user_id, uniqueness: true
+
+  validates :address1,
+    zenkaku: { allow_blank: true }
+  validates :address2,
+    zenkaku: { allow_blank: true }
+  validates :city,
+    zenkaku: { allow_blank: true }
+  validates :state,
+    zenkaku: { allow_blank: true }
+  validates :zip_code,
+    hankaku: { allow_blank: true, type: :number },
+    length: { allow_blank: true, is: 7 }
 end

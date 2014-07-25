@@ -18,7 +18,6 @@
 
 class User < Account
   include MiniAuth
-  include PhoneNumbers
 
   has_many :emails
   has_many :new_emails
@@ -45,8 +44,6 @@ class User < Account
 
   validates :sex, inclusion: { in: %w{male female}, allow_nil: true, allow_blank: true }
   validate :check_creating_user
-  validate :check_organization
-  phone_columns :mobile
 
   scope :active, ->{ where(deleted_at: nil) }
 
