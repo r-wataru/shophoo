@@ -1,11 +1,35 @@
+body {
+  height: 100%;
+}
+
 #wrapper {
   margin: 0 auto;
   padding: 20px;
   display: block;
+  width: 1000px;
 }
 
 #session {
   width: 300px;
   margin: 30px auto 0 auto;
   display: block;
+}
+
+#search {
+  display: inline-block;
+  margin-bottom: 50px;
+}
+
+.search_item {
+  width: 170px;
+  display: block;
+  float: left;
+  margin: 0 10px;
+  .thumbnail_image {
+    width: 140px;
+    height: 140px;
+    background: #ccc;
+    display: block;
+    margin: 0 auto;
+  }
 }

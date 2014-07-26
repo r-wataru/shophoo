@@ -1,5 +1,29 @@
+body {
+  height: 100%;
+}
+
 #wrapper {
   margin: 0 auto;
   padding: 20px;
   display: block;
+  width: 1000px;
+}
+
+#search {
+  display: inline-block;
+  margin-bottom: 50px;
+}
+
+.search_item {
+  width: 50px;
+  display: inline-block;
+  float: left;
+  margin-right: 20px;
+  .thumbnail_image {
+    width: 150px;
+    height: 150px;
+    background: #ccc;
+    display: block;
+    margin: 10px auto;
+  }
 }
