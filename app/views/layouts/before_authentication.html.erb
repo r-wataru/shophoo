@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Shophoo</title>
+  <%= stylesheet_link_tag    "before_authentication", :media => "all" %>
+  <%= javascript_include_tag "before_authentication", :media => "all" %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+<%= render 'shared/before_authentication/header' %>
+<%= yield %>
+
+</body>
+</html>

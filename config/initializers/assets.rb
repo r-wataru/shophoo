@@ -1,0 +1,1 @@
+Rails.application.config.assets.precompile += %w( before_authentication.js before_authentication.css )
