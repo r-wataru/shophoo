@@ -4,6 +4,11 @@
       <%= link_to "Shophoo!!", :root, class: "navbar-brand", style: "font-weight: bold;" %>
     </div>
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <form class="navbar-form navbar-left" role="search">
+        <div class="form-group">
+          <input type="text" class="form-control" placeholder="Search">
+        </div>
+      </form>
       <ul class="nav navbar-nav navbar-right">
         <li><%= button_to "Sign in", :new_session, class: "btn btn-default navbar-btn", method: :get %></li>
       </ul>

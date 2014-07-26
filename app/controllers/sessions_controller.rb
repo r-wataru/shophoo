@@ -10,8 +10,10 @@ class SessionsController < ApplicationController
         session[:current_user_id] = user.id
         user.update_column(:logged_at, Time.current)
         if params[:from].present?
+          flash.notice = "Complete"
           redirect_to params[:from]
         else
+          flash.notice = "Complete"
           redirect_to :root
         end
       end
@@ -22,7 +24,9 @@ class SessionsController < ApplicationController
   end
   
   def destroy
-    session.delete(:session_token)
-    redirect_to :root
+    if current_user
+      session.delete(:current_user_id)
+      redirect_to :root
+    end
   end
 end

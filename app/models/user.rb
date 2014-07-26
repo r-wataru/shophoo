@@ -54,6 +54,10 @@ class User < Account
     self.create_work_address unless self.work_address
   end
 
+  def show_screen_name
+    sex == "male" ? "Mr. " + screen_name : "Ms. " + screen_name
+  end
+
   def full_name
     [ family_name, given_name ].compact.join(' ')
   end
