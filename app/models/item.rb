@@ -23,7 +23,7 @@ class Item < ActiveRecord::Base
   has_many :histories
   has_many :history_users, through: :histories, source: :user
 
-  scope :listable, -> { where(listable: true, deleted: false) }
-  scope :active, -> { where(deleted: false) }
+  scope :listable, -> { where(listable: true, deleted_at: nil) }
+  scope :active, -> { where(deleted_at: nil) }
   scope :list_price, -> { where("price is NOT NULL")}
 end

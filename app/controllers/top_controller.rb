@@ -8,6 +8,8 @@ class TopController < ApplicationController
   end
   
   def search
+    @items = ItemSearcher.new(query: params[:q]).search
+    @items = @items.paginate(page: params[:page], per_page: 10)
     if current_user
       render "search", layout: "application"
     else

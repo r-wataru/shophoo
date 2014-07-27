@@ -4,7 +4,7 @@ unless Rails.env.production?
   DatabaseCleaner.clean
 end
 
-table_names = %w(users)
+table_names = %w(users organizations items)
 
 table_names.each do |table_name|
   dir = case Rails.env
