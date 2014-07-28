@@ -8,4 +8,8 @@ Rails.application.routes.draw do
     put :add_to_cart, :remove_from_cart, on: :member
     put :add_to_bookmark, :remove_from_bookmark, on: :member
   end
+  resource :shopping_cart, only: [ :show ] do
+    put :checkout
+  end
+  resource :history, only: [ :show ]
 end
