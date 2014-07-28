@@ -4,5 +4,8 @@ Rails.application.routes.draw do
   resource :session, only: [ :new, :create, :destroy ]
   resources :items do
     get :search, on: :collection
+    # カート、ブックマークに入れる、消す
+    put :add_to_cart, :remove_from_cart, on: :member
+    put :add_to_bookmark, :remove_from_bookmark, on: :member
   end
 end
