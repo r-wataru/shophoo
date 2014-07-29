@@ -278,7 +278,7 @@ DEPENDENCIES
   jquery-rails
   json (~> 1.8.1)
   launchy
-  mail-iso-2022-jp (~> 2.0.0)
+  mail-iso-2022-jp (~> 2.0.3)
   mini_auth (~> 1.0.0)
   mocha
   mysql2 (~> 0.3.11)
