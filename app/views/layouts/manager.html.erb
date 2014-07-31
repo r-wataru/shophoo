@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Shophoo</title>
+    <%= stylesheet_link_tag    "application", :media => "all" %>
+    <%= javascript_include_tag "application", :media => "all" %>
+    <%= csrf_meta_tags %>
+  </head>
+  <body>
+    <%= render 'shared/manager/header' %>
+    <div id="wrapper">
+      <%= render 'shared/flash' %>
+      <%= yield %>
+    </div>
+  </body>
+</html>

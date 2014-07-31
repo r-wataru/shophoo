@@ -19,4 +19,8 @@ Rails.application.routes.draw do
     get :forgot, :send_mail
     post :start_resetting
   end
+  
+  namespace :manager do
+    resources :organizations, only: [ :show ]
+  end
 end
