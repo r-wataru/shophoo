@@ -1,0 +1,12 @@
+<div id="search">
+  <%= will_paginate(@items, inner_window: 1, outer_window: 1, next_label: "NEXT", previous_label: "PREVIOUS") %>
+  <% @items.each do |item| %>
+    <div class="form-group panel panel-default search_item">
+      <div class="panel-heading"><%= item.display_name %></div>
+      <div class="panel-body">
+        <div class="thumbnail_image"></div>
+      </div>
+    </div>
+  <% end %>
+  <%= will_paginate(@items, inner_window: 1, outer_window: 1, next_label: "NEXT", previous_label: "PREVIOUS") %>
+</div>

@@ -21,6 +21,8 @@ Rails.application.routes.draw do
   end
   
   namespace :manager do
-    resources :organizations, only: [ :show ]
+    resources :organizations, only: [ :show ] do
+      resources :items
+    end
   end
 end
