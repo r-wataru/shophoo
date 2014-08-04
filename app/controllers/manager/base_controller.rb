@@ -4,8 +4,6 @@ class Manager::BaseController < ApplicationController
   
   private
   def prepare_organization
-    if params[:orgaization_id]
-      @organizatinon = current_user.managing_organizations.find(params[:organization_id])
-    end
+    @organization = current_user.managing_organizations.find(params[:organization_id])
   end
 end

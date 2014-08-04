@@ -1,0 +1,19 @@
+<div id="form" class="form-group panel panel-primary">
+  <div class="panel-heading">
+    Edit <%= @item.display_name %>
+  </div>
+  <div class="panel-body">
+    <%= form_for @item, url: [ :manager, @organization, @item ], method: :put do |f| %>
+      <%= f.label :code_name %>
+      <%= f.text_field :code_name, class: "form-control" %>
+      <%= f.label :display_name %>
+      <%= f.text_field :display_name, class: "form-control" %>
+      <%= f.label :price %>
+      <%= f.text_field :price, class: "form-control" %>
+      <%= f.label :description %>
+      <%= f.text_area :description, class: "form-control", size: "40x4" %>
+      <br/>
+      <%= f.submit "Submit", class: "btn label-primary", style: "color: #fff; margin-bottom: 10px; width: 100%;" %>
+    <% end %>
+  </div>
+</div>
