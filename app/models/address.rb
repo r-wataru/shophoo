@@ -15,8 +15,6 @@
 #  phone           :string(255)
 #  mobile          :string(255)
 #  fax             :string(255)
-#  birthday        :date
-#  sex             :string(255)
 #  created_at      :datetime
 #  updated_at      :datetime
 #

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140725010523) do
+ActiveRecord::Schema.define(version: 20140809150503) do
 
   create_table "accounts", force: true do |t|
     t.string   "type",                            null: false
@@ -85,6 +85,22 @@ ActiveRecord::Schema.define(version: 20140725010523) do
 
   add_index "histories", ["user_id", "item_id"], name: "index_histories_on_user_id_and_item_id", unique: true, using: :btree
 
+  create_table "item_images", force: true do |t|
+    t.integer  "item_id",                null: false
+    t.binary   "thumbnail_data"
+    t.string   "thumbnail_content_type"
+    t.binary   "data1"
+    t.string   "data1_content_type"
+    t.binary   "data2"
+    t.string   "data2_content_type"
+    t.binary   "data3"
+    t.string   "data3_content_type"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "item_images", ["item_id"], name: "index_item_images_on_item_id", using: :btree
+
   create_table "items", force: true do |t|
     t.integer  "organization_id"
     t.string   "code_name",                       null: false
@@ -119,12 +135,36 @@ ActiveRecord::Schema.define(version: 20140725010523) do
     t.datetime "updated_at"
   end
 
+  create_table "organization_images", force: true do |t|
+    t.integer  "organization_id",        null: false
+    t.binary   "thumbnail_data"
+    t.string   "thumbnail_content_type"
+    t.binary   "data"
+    t.string   "content_type"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "organization_images", ["organization_id"], name: "index_organization_images_on_organization_id", using: :btree
+
   create_table "shopping_carts", force: true do |t|
     t.integer  "user_id",    null: false
     t.text     "data"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "user_images", force: true do |t|
+    t.integer  "user_id",                null: false
+    t.binary   "thumbnail_data"
+    t.string   "thumbnail_content_type"
+    t.binary   "data"
+    t.string   "content_type"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "user_images", ["user_id"], name: "index_user_images_on_user_id", using: :btree
 
   create_table "user_tokens", force: true do |t|
     t.integer  "user_id",    null: false

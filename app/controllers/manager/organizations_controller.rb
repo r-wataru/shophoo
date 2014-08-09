@@ -4,4 +4,19 @@ class Manager::OrganizationsController < Manager::BaseController
   def show
     @organization = current_user.managing_organizations.find(params[:id])
   end
+  
+  def edit
+    @organization = current_user.managing_organizations.find(params[:id])
+  end
+  
+  def update
+    @organization = current_user.managing_organizations.find(params[:id])
+    if @organization.update_attributes
+    else
+    end
+  end
+  
+  private
+  def organization_params    
+  end
 end

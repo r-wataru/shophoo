@@ -29,10 +29,17 @@ module Shophoo
 
     # Configure the default encoding used in templates for Ruby 1.9.
     config.encoding = "utf-8"
-    
+
     # Enable the asset pipeline
     config.assets.enabled = true
-    
+
     config.assets.version = '1.0'
+
+    config.generators do |g|
+      g.test_framework = "rspec"
+      g.helper = false
+      g.assets = false
+      g.view_specs = false
+    end
   end
 end
