@@ -86,14 +86,14 @@ ActiveRecord::Schema.define(version: 20140809150503) do
   add_index "histories", ["user_id", "item_id"], name: "index_histories_on_user_id_and_item_id", unique: true, using: :btree
 
   create_table "item_images", force: true do |t|
-    t.integer  "item_id",                null: false
-    t.binary   "thumbnail_data"
+    t.integer  "item_id",                                   null: false
+    t.binary   "thumbnail_data",         limit: 2147483647
     t.string   "thumbnail_content_type"
-    t.binary   "data1"
+    t.binary   "data1",                  limit: 2147483647
     t.string   "data1_content_type"
-    t.binary   "data2"
+    t.binary   "data2",                  limit: 2147483647
     t.string   "data2_content_type"
-    t.binary   "data3"
+    t.binary   "data3",                  limit: 2147483647
     t.string   "data3_content_type"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -136,10 +136,10 @@ ActiveRecord::Schema.define(version: 20140809150503) do
   end
 
   create_table "organization_images", force: true do |t|
-    t.integer  "organization_id",        null: false
-    t.binary   "thumbnail_data"
+    t.integer  "organization_id",                           null: false
+    t.binary   "thumbnail_data",         limit: 2147483647
     t.string   "thumbnail_content_type"
-    t.binary   "data"
+    t.binary   "data",                   limit: 2147483647
     t.string   "content_type"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -155,10 +155,10 @@ ActiveRecord::Schema.define(version: 20140809150503) do
   end
 
   create_table "user_images", force: true do |t|
-    t.integer  "user_id",                null: false
-    t.binary   "thumbnail_data"
+    t.integer  "user_id",                                   null: false
+    t.binary   "thumbnail_data",         limit: 2147483647
     t.string   "thumbnail_content_type"
-    t.binary   "data"
+    t.binary   "data",                   limit: 2147483647
     t.string   "content_type"
     t.datetime "created_at"
     t.datetime "updated_at"
