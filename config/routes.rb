@@ -5,6 +5,9 @@ Rails.application.routes.draw do
   post 'forgot_update_password/:token', to: "passwords#update_password", as: "forgot_update_password"
   resource :session, only: [ :new, :create, :destroy ]
   resources :items do
+    member do
+      get :thumbnail, :data1, :data2, :data3
+    end
     get :search, on: :collection
     # カート、ブックマークに入れる、消す
     put :add_to_cart, :remove_from_cart, on: :member
@@ -22,7 +25,11 @@ Rails.application.routes.draw do
   
   namespace :manager do
     resources :organizations, only: [ :show ] do
-      resources :items
+      resources :items do
+        member do
+          get :thumbnail, :data1, :data2, :data3
+        end
+      end
     end
   end
 end

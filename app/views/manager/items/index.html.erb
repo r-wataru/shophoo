@@ -4,7 +4,13 @@
     <div class="form-group panel panel-default search_item">
       <div class="panel-heading"><%= link_to item.display_name, [ :edit, :manager, @organization, item ] %></div>
       <div class="panel-body">
-        <div class="thumbnail_image"></div>
+        <div class="thumbnail_image">
+          <% if item.image.thumbnail_data.present? %>
+            <%= image_tag thumbnail_item_path(id: item.id, format: item.image.thumbnail_extension), size: "140x140" %>
+          <% else %>
+            <p>No Image</p>
+          <% end %>
+        </div>
       </div>
     </div>
   <% end %>

@@ -36,6 +36,7 @@ class ItemImage < ActiveRecord::Base
     if data1_changed? and !data1.nil?
       thumbnail = Magick::Image.from_blob(data1).first.resize_to_fill(THUMBNAIL_WIDTH, THUMBNAIL_HEIGHT)
       self.thumbnail_data = thumbnail.to_blob
+      self.thumbnail_content_type = data1_content_type
     end
   end
 
