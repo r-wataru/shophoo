@@ -2,7 +2,7 @@
   <%= will_paginate(@items, inner_window: 1, outer_window: 1, next_label: "NEXT", previous_label: "PREVIOUS") %>
   <% @items.each do |item| %>
     <div class="form-group panel panel-default search_item">
-      <div class="panel-heading"><%= link_to item.display_name, [ :edit, :manager, @organization, item ] %></div>
+      <div class="panel-heading"><%= link_to item.display_name, [ :manager, @organization, item ] %></div>
       <div class="panel-body">
         <div class="thumbnail_image">
           <% if item.image.thumbnail_data.present? %>

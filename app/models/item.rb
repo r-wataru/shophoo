@@ -23,10 +23,18 @@ class Item < ActiveRecord::Base
   has_many :histories
   has_many :history_users, through: :histories, source: :user
   has_one :image, class_name: "ItemImage", dependent: :destroy
-  
+
   accepts_nested_attributes_for :image, allow_destroy: true
 
   scope :listable, -> { where(listable: true, deleted_at: nil) }
   scope :active, -> { where(deleted_at: nil) }
   scope :list_price, -> { where("price is NOT NULL")}
+
+  def display_price
+    "¥ #{price}"
+  end
+
+  def display_show
+    listable? ? "Showing" : "Secret"
+  end
 end

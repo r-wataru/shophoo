@@ -15,9 +15,15 @@ body {
 }
 
 #form {
-  width: 700px;
+  width: 1024px;
   margin: 30px auto 0 auto;
   display: block;
+}
+
+.position {
+  width: 100%;
+  text-align: right;
+  margin-bottom: 10px;
 }
 
 .search_item {
