@@ -1,6 +1,6 @@
 class Manager::ItemsController < Manager::BaseController
   def index
-    @items = @organization.items.paginate(page: params[:page], per_page: 10)
+    @items = @organization.items.active.paginate(page: params[:page], per_page: 10)
   end
 
   def show
@@ -9,15 +9,45 @@ class Manager::ItemsController < Manager::BaseController
 
   def edit
     @item = @organization.items.find(params[:id])
+    @item.build_image unless @item.image
   end
 
   def update
     @item = @organization.items.find(params[:id])
-    redirect_to :back
+    @item.assign_attributes edit_item_params
+    if params[:uploaded_image1_destroy].present?
+      d = @item.image
+      d.data1 = nil
+      d.data1_content_type = nil
+      d.save
+    end
+    if params[:uploaded_image2_destroy].present?
+      d = @item.image
+      d.data2 = nil
+      d.data2_content_type = nil
+      d.save
+    end
+    if params[:uploaded_image3_destroy].present?
+      d = @item.image
+      d.data3 = nil
+      d.data3_content_type = nil
+      d.save
+    end
+    if @item.valid?
+      @item.save
+      flash.notice = "Complete"
+      redirect_to [ :manager, @organization, :items ]
+    else
+      @item.build_image unless @image.image
+      flash.now.alert = "Invalid!"
+      render action: :edit
+    end
   end
 
   def destroy
-    redirect_to :back
+    @item = @organization.items.find(params[:id])
+    @item.update_column(:deleted_at, Time.current)
+    redirect_to [ :manager, @organization, :items ]
   end
 
   # GET
@@ -31,7 +61,7 @@ class Manager::ItemsController < Manager::BaseController
     end
   end
 
-def data1
+  def data1
     @item = Item.find(params[:id])
     respond_to do |format|
       format.html
@@ -84,5 +114,21 @@ def data1
     send_data(@item.image.data3,
       :disposition => "inline",
       :type => @item.image.data3_content_type)
+  end
+
+  def edit_item_params
+    params.require(:item).permit(
+      :price, :listable, :code_name,
+      :display_name, :description,
+      image_attributes: [
+        'uploaded_image1',
+        'data1_content_type',
+        'uploaded_image2',
+        'data2_content_type',
+        'uploaded_image3',
+        'data3_content_type',
+        'id'
+      ]
+    )
   end
 end

@@ -14,9 +14,15 @@ body {
   margin-bottom: 50px;
 }
 
-#form {
+#show {
   width: 1024px;
   margin: 30px auto 0 auto;
+  display: block;
+}
+
+.form {
+  width: 400px;
+  margin: 0 auto;
   display: block;
 }
 
