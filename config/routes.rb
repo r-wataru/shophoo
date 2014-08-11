@@ -17,12 +17,12 @@ Rails.application.routes.draw do
     put :checkout
   end
   resource :history, only: [ :show ]
-  
+
   resource :password, only: [] do
     get :forgot, :send_mail
     post :start_resetting
   end
-  
+
   namespace :manager do
     resources :organizations, only: [ :show ] do
       resources :items do

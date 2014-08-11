@@ -5,60 +5,9 @@
   <div class="panel-body">
     <div class="form">
       <%= form_for @item, url: [ :manager, @organization, @item ], method: :put do |f| %>
-        <%= f.fields_for :image do |img| %>
-          <div>
-            <%= img.label :uploaded_image1 %> ( Max 5MB )<br/>
-            <%= img.file_field :uploaded_image1 %><br/>
-          </div>
-          <% if img.object.errors.empty? and @item.image.data1.present? %>
-            <div>
-              <%= image_tag data1_item_path(id: @item.id, format: @item.image.extension1),
-                style: "max-width: 140px; max-height: 140px;"%><br/>
-              <%= label_tag :uploaded_image1_destroy, "Destroy" %>
-              <%= check_box_tag :uploaded_image1_destroy %><br/>
-              <%= img.hidden_field :id %>
-            </div>
-          <% end %>
-          <div>
-            <%= img.label :uploaded_image2 %> ( Max 5MB )<br/>
-            <%= img.file_field :uploaded_image2 %><br/>
-          </div>
-          <% if img.object.errors.empty? and @item.image.data2.present? %>
-            <div>
-              <%= image_tag data2_item_path(id: @item.id, format: @item.image.extension2),
-                style: "max-width: 140px; max-height: 140px;"%><br/>
-              <%= label_tag :uploaded_image2_destroy, "Destroy" %>
-              <%= check_box_tag :uploaded_image2_destroy %><br/>
-              <%= img.hidden_field :id %>
-            </div>
-          <% end %>
-          <div>
-            <%= img.label :uploaded_image3 %> ( Max 5MB )<br/>
-            <%= img.file_field :uploaded_image3 %><br/>
-          </div>
-          <% if img.object.errors.empty? and @item.image.data1.present? %>
-            <div>
-              <%= image_tag data3_item_path(id: @item.id, format: @item.image.extension3),
-                style: "max-width: 140px; max-height: 140px;"%><br/>
-              <%= label_tag :uploaded_image3_destroy, "Destroy" %>
-              <%= check_box_tag :uploaded_image3_destroy %><br/>
-              <%= img.hidden_field :id %>
-            </div>
-          <% end %>
-        <% end %>
-        <%= f.label :code_name %>
-        <%= f.text_field :code_name, class: "form-control" %>
-        <%= f.label :display_name %>
-        <%= f.text_field :display_name, class: "form-control" %>
-        <%= f.label :price %>
-        <%= f.text_field :price, class: "form-control" %>
-        <%= f.label :listable %>
-        <%= f.check_box :listable %><br/>
-        <%= f.label :description %>
-        <%= f.text_area :description, class: "form-control", size: "40x4" %>
-        <br/>
-        <%= f.submit "Submit", class: "btn label-primary", style: "color: #fff; margin-bottom: 10px; width: 100%;" %>
+        <%= render 'form', f: f %>
+        <%= f.submit "Update", class: "btn label-primary", style: "color: #fff; margin-bottom: 10px; width: 100%;" %>
       <% end %>
-    </div>
+    </di
   </div>
 </div>

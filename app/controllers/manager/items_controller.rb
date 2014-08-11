@@ -3,6 +3,25 @@ class Manager::ItemsController < Manager::BaseController
     @items = @organization.items.active.paginate(page: params[:page], per_page: 10)
   end
 
+  def new
+    @item = @organization.items.new
+    @item.build_image unless @item.image
+  end
+
+  def create
+    @item = @organization.items.new
+    @item.assign_attributes item_params
+    if @item.valid?
+      @item.save
+      flash.notice = "Complete"
+      redirect_to [ :manager, @organization, :items ]
+    else
+      @item.build_image unless @image.image
+      flash.now.alert = "Invalid!"
+      render action: :new
+    end
+  end
+
   def show
     @item = @organization.items.find(params[:id])
   end
@@ -14,7 +33,7 @@ class Manager::ItemsController < Manager::BaseController
 
   def update
     @item = @organization.items.find(params[:id])
-    @item.assign_attributes edit_item_params
+    @item.assign_attributes item_params
     if params[:uploaded_image1_destroy].present?
       d = @item.image
       d.data1 = nil
@@ -116,7 +135,7 @@ class Manager::ItemsController < Manager::BaseController
       :type => @item.image.data3_content_type)
   end
 
-  def edit_item_params
+  def item_params
     params.require(:item).permit(
       :price, :listable, :code_name,
       :display_name, :description,
