@@ -7,7 +7,6 @@ describe Item do
     Then { expect(item.updated_at).to eq(TimeZero) }
   end
 
-
   context 'Code Name Validation' do
     Given(:item) { build(:item, code_name: "a b c") }
     Given(:item2) { build(:item, code_name: "a.bc") }
