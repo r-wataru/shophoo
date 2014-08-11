@@ -1,6 +1,8 @@
 <%= f.fields_for :image do |img| %>
+  <%= format_error_message(@item, :data, f).html_safe %>
   <div>
     <%= img.label :uploaded_image1 %> ( Max 5MB )<br/>
+    <%= format_error_message(@item.image, :uploaded_image1, img).html_safe %>
     <%= img.file_field :uploaded_image1 %><br/>
   </div>
   <% if img.object.errors.empty? and @item.image.data1.present? %>
@@ -14,6 +16,7 @@
   <% end %>
   <div>
     <%= img.label :uploaded_image2 %> ( Max 5MB )<br/>
+    <%= format_error_message(@item.image, :uploaded_image2, img).html_safe %>
     <%= img.file_field :uploaded_image2 %><br/>
   </div>
   <% if img.object.errors.empty? and @item.image.data2.present? %>
@@ -27,9 +30,10 @@
   <% end %>
   <div>
     <%= img.label :uploaded_image3 %> ( Max 5MB )<br/>
+    <%= format_error_message(@item.image, :uploaded_image3, img).html_safe %>
     <%= img.file_field :uploaded_image3 %><br/>
   </div>
-  <% if img.object.errors.empty? and @item.image.data1.present? %>
+  <% if img.object.errors.empty? and @item.image.data3.present? %>
     <div>
       <%= image_tag data3_item_path(id: @item.id, format: @item.image.extension3),
         style: "max-width: 140px; max-height: 140px;"%><br/>
@@ -40,10 +44,13 @@
   <% end %>
 <% end %>
 <%= f.label :code_name %>
+<%= format_error_message(@item, :code_name, f).html_safe %>
 <%= f.text_field :code_name, class: "form-control" %>
 <%= f.label :display_name %>
+<%= format_error_message(@item, :display_name, f).html_safe %>
 <%= f.text_field :display_name, class: "form-control" %>
 <%= f.label :price %>
+<%= format_error_message(@item, :price, f).html_safe %>
 <%= f.text_field :price, class: "form-control" %>
 <%= f.label :listable %>
 <%= f.check_box :listable %><br/>

@@ -23,12 +23,25 @@ class Item < ActiveRecord::Base
   has_many :histories
   has_many :history_users, through: :histories, source: :user
   has_one :image, class_name: "ItemImage", dependent: :destroy
-
   accepts_nested_attributes_for :image, allow_destroy: true
+  attr_accessor :data
 
   scope :listable, -> { where(listable: true, deleted_at: nil) }
   scope :active, -> { where(deleted_at: nil) }
   scope :list_price, -> { where("price is NOT NULL")}
+
+  validates :code_name, presence: true, uniqueness: { scope: :organization_id },
+    format: { with: /\A[a-z0-9_+-]+\z/, allow_blank: true }
+  validates :display_name, presence: true
+  validates :price, presence: true, numericality: { allow_blank: true }
+  #validate :check_image
+
+  before_validation do
+    if deleted_at.present? && !code_name.match(/\+[0-9a-f]{32}/)
+      self.code_name += '+' + SecureRandom.hex
+      self.deleted_at = Time.current if self.deleted_at.nil?
+    end
+  end
 
   def display_price
     "¥ #{price}"
@@ -36,5 +49,16 @@ class Item < ActiveRecord::Base
 
   def display_show
     listable? ? "Showing" : "Secret"
+  end
+
+  private
+  def check_image
+    if new_record?
+      if self.image.nil?
+        errors.add(:data, :blank)
+      elsif self.image.data1.blank?
+        errors.add(:data, :blank)
+      end
+    end
   end
 end

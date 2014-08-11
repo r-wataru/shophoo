@@ -16,7 +16,7 @@ class Manager::ItemsController < Manager::BaseController
       flash.notice = "Complete"
       redirect_to [ :manager, @organization, :items ]
     else
-      @item.build_image unless @image.image
+      @item.build_image unless @item.image
       flash.now.alert = "Invalid!"
       render action: :new
     end
