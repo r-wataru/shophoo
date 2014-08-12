@@ -1,11 +1,11 @@
 <%= f.fields_for :image do |img| %>
-  <%= format_error_message(@item, :data, f).html_safe %>
   <div>
     <%= img.label :uploaded_image1 %> ( Max 5MB )<br/>
     <%= format_error_message(@item.image, :uploaded_image1, img).html_safe %>
     <%= img.file_field :uploaded_image1 %><br/>
   </div>
-  <% if img.object.errors.empty? and @item.image.data1.present? %>
+
+  <% if img.object.errors.empty? and f.object.errors.empty? and @item.image.data1.present? %>
     <div>
       <%= image_tag data1_item_path(id: @item.id, format: @item.image.extension1),
         style: "max-width: 140px; max-height: 140px;"%><br/>
@@ -19,7 +19,7 @@
     <%= format_error_message(@item.image, :uploaded_image2, img).html_safe %>
     <%= img.file_field :uploaded_image2 %><br/>
   </div>
-  <% if img.object.errors.empty? and @item.image.data2.present? %>
+  <% if img.object.errors.empty? and f.object.errors.empty? and @item.image.data2.present? %>
     <div>
       <%= image_tag data2_item_path(id: @item.id, format: @item.image.extension2),
         style: "max-width: 140px; max-height: 140px;"%><br/>
@@ -33,7 +33,7 @@
     <%= format_error_message(@item.image, :uploaded_image3, img).html_safe %>
     <%= img.file_field :uploaded_image3 %><br/>
   </div>
-  <% if img.object.errors.empty? and @item.image.data3.present? %>
+  <% if img.object.errors.empty? and f.object.errors.empty? and @item.image.data3.present? %>
     <div>
       <%= image_tag data3_item_path(id: @item.id, format: @item.image.extension3),
         style: "max-width: 140px; max-height: 140px;"%><br/>

@@ -10,6 +10,7 @@ class Manager::ItemsController < Manager::BaseController
 
   def create
     @item = @organization.items.new
+    @item.build_image unless @item.image
     @item.assign_attributes item_params
     if @item.valid?
       @item.save
@@ -57,7 +58,7 @@ class Manager::ItemsController < Manager::BaseController
       flash.notice = "Complete"
       redirect_to [ :manager, @organization, :items ]
     else
-      @item.build_image unless @image.image
+      @item.build_image unless @item.image
       flash.now.alert = "Invalid!"
       render action: :edit
     end

@@ -23,7 +23,7 @@ class ItemImage < ActiveRecord::Base
   attr_reader :uploaded_image2
   attr_reader :uploaded_image3
   attr_reader :uploaded_thumbnail
-  
+
   validate :check_image1
   validate :check_image2
   validate :check_image3
@@ -31,7 +31,7 @@ class ItemImage < ActiveRecord::Base
   IMAGE_TYPES = { "image/jpeg" => "jpg", "image/gif" => "gif", "image/png" => "png" }
   THUMBNAIL_WIDTH = 200
   THUMBNAIL_HEIGHT = 200
-  
+
   before_save do
     if data1_changed? and !data1.nil?
       thumbnail = Magick::Image.from_blob(data1).first.resize_to_fill(THUMBNAIL_WIDTH, THUMBNAIL_HEIGHT)
@@ -79,7 +79,7 @@ class ItemImage < ActiveRecord::Base
     self.data3 = image3.read
     @uploaded_image3 = image3
   end
-  
+
   def check_image1
     if @uploaded_image1
       if data1.size > 5.megabytes
@@ -88,9 +88,13 @@ class ItemImage < ActiveRecord::Base
       unless IMAGE_TYPES.has_key?(data1_content_type)
         errors.add(:uploaded_image1, :invalid_image)
       end
+    else
+      if data1.nil?
+        errors.add(:uploaded_image1, :blank)
+      end
     end
   end
-  
+
   def check_image2
     if @uploaded_image2
       if data2.size > 5.megabytes
@@ -101,7 +105,7 @@ class ItemImage < ActiveRecord::Base
       end
     end
   end
-  
+
   def check_image3
     if @uploaded_image3
       if data3.size > 5.megabytes

@@ -35,6 +35,10 @@ class Organization < Account
 
   attr_accessor :owner_user
 
+  after_create do
+    self.create_organization_address unless self.organization_address
+  end
+
   validates :real_name, presence: true
   scope :active, ->{ where(deleted_at: nil) }
 
