@@ -26,11 +26,55 @@ body {
   display: block;
 }
 
+.display {
+  width: 700px;
+  margin: 0 auto;
+  display: block;
+}
+
 .position {
   width: 100%;
   text-align: right;
   margin-bottom: 10px;
 }
+
+.account_box {
+  td, th {
+    padding: 5px;
+  }
+  .thumbnail_box {
+    width: 150px;
+    .account_thumbnail {
+      width: 150px;
+      height: 150px;
+      background: #ccc;
+      display: block;
+    }
+    p {
+      padding-top: 60px;
+      text-align: center;
+      font-weight: bold;
+    }
+  }
+  .address {
+    width: 550px;
+    b {
+      width: 150px;
+      display: block;
+      padding: 10px;
+      float: left;
+      background: #eee;
+      box-shadow: inset 1px 1px 1px #ccc;
+    }
+    span {
+      width: 360px;
+      display: block;
+      padding: 10px;
+      float: right;
+    }
+  } 
+}
+
 
 .search_item {
   width: 170px;

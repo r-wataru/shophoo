@@ -1,1 +1,44 @@
-show!!
+<div id="show" class="form-group panel panel-primary">
+  <div class="panel-heading">
+    <%= @organization.real_name %>
+  </div>
+  <div class="panel-body">
+    <div class="display">
+      <table class="account_box">
+        <tr>
+          <th rowspan="4" class="thumbnail_box">
+          <div class="account_thumbnail">
+            <% if @organization.image && @orgaization.image.thumbnail_data.present? %>
+            <%#= image %>
+            <% else %>
+            <p>No Image</p>
+            <% end %>
+          </div>
+        </th>
+        <td class="address">
+          <b>団体名</b>
+          <span class="body"><%= @organization.screen_name %></span>
+        </td>
+        </tr>
+        <tr>
+          <td class="address">
+            <b>電話番号</b>
+            <span class="body"><%= @organization.organization_address.show_phone %></span>
+          </td>
+        </tr>
+        <tr>
+          <td class="address">
+            <b>Fax</b>
+            <span class="body"><%= @organization.organization_address.show_fax %></span>
+          </td>
+        </tr>
+        <tr>
+          <td class="address">
+            <b>住所</b>
+            <span class="body"><%= @organization.organization_address.full_address %></span>
+          </td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</div>

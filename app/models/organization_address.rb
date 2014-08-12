@@ -42,4 +42,12 @@ class OrganizationAddress < Address
   def full_address
     [ self.state, self.city, self.address1, self.address2 ].compact.join(' ')
   end
+  
+  def show_phone
+    self.phone.present? ? phone : "-"
+  end
+  
+  def show_fax
+    self.fax.present? ? fax : "-"
+  end
 end
