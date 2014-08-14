@@ -24,7 +24,8 @@ Rails.application.routes.draw do
   end
 
   namespace :manager do
-    resources :organizations, only: [ :show ] do
+    resources :organizations, only: [ :show, :edit, :update ] do
+      get :thumbnail, :data
       resources :items do
         member do
           get :thumbnail, :data1, :data2, :data3

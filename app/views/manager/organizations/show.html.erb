@@ -6,10 +6,10 @@
     <div class="display">
       <table class="account_box">
         <tr>
-          <th rowspan="4" class="thumbnail_box">
+          <th rowspan="5" class="thumbnail_box">
           <div class="account_thumbnail">
-            <% if @organization.image && @orgaization.image.thumbnail_data.present? %>
-            <%#= image %>
+            <% if @organization.image && @organization.image.thumbnail_data.present? %>
+              <%= image_tag manager_organization_thumbnail_path(organization_id: @organization.id, format: @organization.image.thumbnail_extension) %>
             <% else %>
             <p>No Image</p>
             <% end %>
@@ -24,6 +24,12 @@
           <td class="address">
             <b>電話番号</b>
             <span class="body"><%= @organization.organization_address.show_phone %></span>
+          </td>
+        </tr>
+        <tr>
+          <td class="address">
+            <b>Mobile</b>
+            <span class="body"><%= @organization.organization_address.show_mobile %></span>
           </td>
         </tr>
         <tr>

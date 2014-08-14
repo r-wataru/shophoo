@@ -21,13 +21,14 @@ class OrganizationImage < ActiveRecord::Base
   validate :check_image
 
   IMAGE_TYPES = { "image/jpeg" => "jpg", "image/gif" => "gif", "image/png" => "png" }
-  THUMBNAIL_WIDTH = 200
-  THUMBNAIL_HEIGHT = 200
+  THUMBNAIL_WIDTH = 150
+  THUMBNAIL_HEIGHT = 150
 
   before_save do
     if data_changed? and !data.nil?
       thumbnail = Magick::Image.from_blob(data).first.resize_to_fill(THUMBNAIL_WIDTH, THUMBNAIL_HEIGHT)
       self.thumbnail_data = thumbnail.to_blob
+      self.thumbnail_content_type = content_type
     end
   end
 
@@ -36,7 +37,7 @@ class OrganizationImage < ActiveRecord::Base
   end
 
   def extension
-    IMAGE_TYPES[data_content_type]
+    IMAGE_TYPES[content_type]
   end
 
   def uploaded_thumbnail=(thumbnail)
@@ -46,17 +47,17 @@ class OrganizationImage < ActiveRecord::Base
   end
 
   def uploaded_image=(image)
-    self.data_content_type = convert_content_type(image.content_type)
+    self.content_type = convert_content_type(image.content_type)
     self.data = image.read
-    @uploaded_image1 = image
+    @uploaded_image = image
   end
 
   def check_image
     if @uploaded_image
-      if data.size > 20.megabytes
+      if data.size > 5.megabytes
         errors.add(:uploaded_image, :too_big_image)
       end
-      unless IMAGE_TYPES.has_key?(data_content_type)
+      unless IMAGE_TYPES.has_key?(content_type)
         errors.add(:uploaded_image, :invalid_image)
       end
     end

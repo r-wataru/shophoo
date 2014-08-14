@@ -1,25 +1,31 @@
 <div id="search">
-  <% @shopping_cart.items.each do |item| %>
-    <div class="form-group panel panel-default search_item">
-      <div class="panel-heading"><%= item.display_name %></div>
-      <div class="panel-body">
-        <div class="thumbnail_image"></div>
-        <p>
-          <% if current_user %>
-            <% if current_user.bookmark_folder.try(:has_item?, item) %>
-              <%= link_to "Remove Favorite", [ :remove_from_bookmark, item], class: "btn btn-default", style: "width: 100%; margin:10px 0;", role: "button", method: :put %>
-            <% else %>
-              <%= link_to "Favorite", [ :add_to_bookmark, item ], class: "btn btn-default", style: "width: 100%; margin:10px 0;", role: "button", method: :put %>
+  <% if @shopping_cart.items.count > 0 %>
+    <% @shopping_cart.items.each do |item| %>
+      <div class="form-group panel panel-default search_item">
+        <div class="panel-heading"><%= item.display_name %></div>
+        <div class="panel-body">
+          <div class="thumbnail_image"></div>
+          <p>
+            <% if current_user %>
+              <% if current_user.bookmark_folder.try(:has_item?, item) %>
+                <%= link_to "Remove Favorite", [ :remove_from_bookmark, item], class: "btn btn-default", style: "width: 100%; margin:10px 0;", role: "button", method: :put %>
+              <% else %>
+                <%= link_to "Favorite", [ :add_to_bookmark, item ], class: "btn btn-default", style: "width: 100%; margin:10px 0;", role: "button", method: :put %>
+              <% end %>
+              <% if current_user.shopping_cart.try(:has_item?, item) %>
+                <%= link_to "Remove Cart", [ :remove_from_cart, item], class: "btn btn-warning", style: "width: 100%;", role: "button", method: :put %>
+              <% end %>
             <% end %>
-            <% if current_user.shopping_cart.try(:has_item?, item) %>
-              <%= link_to "Remove Cart", [ :remove_from_cart, item], class: "btn btn-warning", style: "width: 100%;", role: "button", method: :put %>
-            <% end %>
-          <% end %>
-        </p>
+          </p>
+        </div>
       </div>
-    </div>
+    <% end %>
+  <% else %>
+    <p>Nothing Items</p>
   <% end %>
 </div>
-<div class="checkout">
-  <%= link_to "CHECK OUT", :checkout_shopping_cart, class: "btn btn-success", style: "float: right;", method: :put %>
-</div>
+<% if @shopping_cart.items.count > 0 %>
+  <div class="checkout">
+    <%= link_to "CHECK OUT", :checkout_shopping_cart, class: "btn btn-success", style: "float: right;", method: :put %>
+  </div>
+<% end %>

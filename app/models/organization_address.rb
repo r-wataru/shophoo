@@ -50,4 +50,8 @@ class OrganizationAddress < Address
   def show_fax
     self.fax.present? ? fax : "-"
   end
+  
+  def show_mobile
+    self.mobile.present? ? mobile : "-"
+  end
 end
