@@ -1,0 +1,68 @@
+<div id="show" class="form-group panel panel-primary">
+  <div class="panel-heading">
+    <%= @history.user.screen_name %>
+  </div>
+  <div class="panel-body">
+    <div class="display">
+      <table class="account_box">
+        <tr>
+          <th rowspan="8" class="thumbnail_box">
+            <div class="account_thumbnail">
+              <% if @history.user.image && @history.user.image.thumbnail_data.present? %>
+                <%= image_tag user_thumbnail_path(user_id: @history.user_id, format: @history.user.image.thumbnail_extension) %>
+              <% else %>
+              <p>No Image</p>
+              <% end %>
+            </div>
+          </th>
+          <td class="address">
+            <b>スクリーンネーム</b>
+            <span class="body"><%= @history.user.screen_name %></span>
+          </td>
+        </tr>
+        <tr>
+          <td class="address">
+            <b>個人電話番号</b>
+            <span class="body"><%= @history.user.private_address.show_phone %></span>
+          </td>
+        </tr>
+        <tr>
+          <td class="address">
+            <b>個人Mobile</b>
+            <span class="body"><%= @history.user.private_address.show_mobile %></span>
+          </td>
+        </tr>
+        <tr>
+          <td class="address">
+            <b>個人Fax</b>
+            <span class="body"><%= @history.user.private_address.show_fax %></span>
+          </td>
+        </tr>
+        <tr>
+          <td class="address">
+            <b>個人住所</b>
+            <span class="body"><%= @history.user.private_address.full_address %></span>
+          </td>
+        </tr>
+        <tr>
+          <td class="address">
+            <b>会社電話番号</b>
+            <span class="body"><%= @history.user.work_address.show_phone %></span>
+          </td>
+        </tr>
+        <tr>
+          <td class="address">
+            <b>会社Fax</b>
+            <span class="body"><%= @history.user.work_address.show_fax %></span>
+          </td>
+        </tr>
+        <tr>
+          <td class="address">
+            <b>会社住所</b>
+            <span class="body"><%= @history.user.work_address.full_address %></span>
+          </td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,22 @@
+<div id="search">
+  <% if @histories.present? %>
+    <%= will_paginate(@histories, inner_window: 1, outer_window: 1, next_label: "NEXT", previous_label: "PREVIOUS") %>
+    <% @histories.each do |history| %>
+      <div class="form-group panel panel-default search_item">
+        <div class="panel-heading"><%= link_to history.item.display_name, [ :manager, @organization, history ] %></div>
+        <div class="panel-body">
+          <div class="thumbnail_image">
+            <% if history.item.image && history.item.image.thumbnail_data.present? %>
+              <%= image_tag thumbnail_item_path(id: history.item_id, format: history.item.image.thumbnail_extension), size: "140x140" %>
+            <% else %>
+              <p>No Image</p>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+    <%= will_paginate(@histories, inner_window: 1, outer_window: 1, next_label: "NEXT", previous_label: "PREVIOUS") %>
+  <% else %>
+    <p>No Items</p>
+  <% end %>
+</div>

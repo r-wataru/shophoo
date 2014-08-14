@@ -20,6 +20,8 @@
 #
 
 class WorkAddress < Address
+  include PhoneNumbers
+
   belongs_to :user
 
   validates :user_id, uniqueness: true
@@ -35,4 +37,22 @@ class WorkAddress < Address
   validates :zip_code,
     hankaku: { allow_blank: true, type: :number },
     length: { allow_blank: true, is: 7 }
+
+  phone_columns :phone, :fax, :mobile
+
+  def full_address
+    [ self.state, self.city, self.address1, self.address2 ].compact.join(' ')
+  end
+
+  def show_phone
+    self.phone.present? ? phone : "-"
+  end
+
+  def show_fax
+    self.fax.present? ? fax : "-"
+  end
+
+  def show_mobile
+    self.mobile.present? ? mobile : "-"
+  end
 end

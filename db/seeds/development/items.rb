@@ -125,3 +125,11 @@ Item.where(id: (48..56)).each_with_index do |item,i|
 end
 
 puts "Created up to 56 ...."
+
+o = Organization.find_by_screen_name("rubyquitous")
+i = o.items.first
+%w(alice bob charlie david eric nobody).each do |user|
+  u = User.find_by_screen_name("#{user}")
+  o.histories.create(
+    user: u, item: i)
+end
