@@ -105,3 +105,20 @@ body {
   font-weight: bold;
   color: orange;
 }
+
+#history {
+  border-top: 1px solid #ccc;
+  border-bottom: 1px solid #ccc;
+  margin-top: -1px;
+  table {
+    width: 100%;
+    th {
+      padding: 10px;
+      width: 160px;
+    }
+    .title {
+      font-size: 26px;
+      font-weight: bold;
+    }
+  }
+}

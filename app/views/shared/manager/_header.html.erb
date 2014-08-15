@@ -1,7 +1,7 @@
 <nav class="navbar navbar-default" role="navigation">
   <div class="container-fluid">
     <div class="navbar-header">
-      <a class="navbar-brand" href="#" style="font-weight: bold;">Shophoo!!</a>
+      <%= link_to "Shophoo!!", [ :manager, @organization ], class: "navbar-brand", style: "font-weight: bold;" %>
     </div>
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <%= form_tag :search, class: "navbar-form navbar-left", role: "search", method: :get do %>
@@ -34,6 +34,7 @@
             <li><%= link_to "New Items", [ :new, :manager, @organization, :item ] %></li>
             <li><%= link_to "History", [ :manager, @organization, :histories ] %></li>
             <li><%= link_to "Setting", [ :edit, :manager, @organization ] %></li>
+            <li><%= link_to "User", :root %></li>
           </ul>
         </li>
       </ul>
