@@ -1,5 +1,5 @@
 <div id="search">
-  <% if @shopping_cart.items.count > 0 %>
+  <% if @shopping_cart.data.present? && @shopping_cart.items.count > 0 %>
     <% @shopping_cart.items.each do |item| %>
       <div class="form-group panel panel-default search_item">
         <div class="panel-heading"><%= item.display_name %></div>
@@ -24,7 +24,7 @@
     <p>Nothing Items</p>
   <% end %>
 </div>
-<% if @shopping_cart.items.count > 0 %>
+<% if @shopping_cart.data.present? && @shopping_cart.items.count > 0 %>
   <div class="checkout">
     <%= link_to "CHECK OUT", :checkout_shopping_cart, class: "btn btn-success", style: "float: right;", method: :put %>
   </div>

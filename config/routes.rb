@@ -4,7 +4,11 @@ Rails.application.routes.draw do
   get 'reset_password/:token', to: "passwords#reset_password", as: "reset_password"
   post 'forgot_update_password/:token', to: "passwords#update_password", as: "forgot_update_password"
   resource :session, only: [ :new, :create, :destroy ]
-  resources :users
+  resources :users do
+    member do
+      get :thumbnail, :data
+    end
+  end
   resources :items do
     member do
       get :thumbnail, :data1, :data2, :data3

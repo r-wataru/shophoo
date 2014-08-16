@@ -1,0 +1,74 @@
+<div id="show" class="form-group panel panel-primary">
+  <div class="panel-heading">
+    <%= current_user.screen_name %>
+  </div>
+  <div class="panel-body">
+    <div class="display">
+      <table class="account_box">
+        <tr>
+          <th rowspan="9" class="thumbnail_box">
+          <div class="account_thumbnail">
+            <% if current_user.image && current_user.image.thumbnail_data.present? %>
+              <%= image_tag thumbnail_user_path(user_id: current_user.id, format: current_user.image.thumbnail_extension) %>
+            <% else %>
+            <p>No Image</p>
+            <% end %>
+          </div>
+        </th>
+        <td class="address">
+          <b>団体名</b>
+          <span class="body"><%= current_user.screen_name %></span>
+        </td>
+        </tr>
+        <tr>
+          <td class="address">
+            <b>電話番号</b>
+            <span class="body"><%= current_user.private_address.show_phone %></span>
+          </td>
+        </tr>
+        <tr>
+          <td class="address">
+            <b>Mobile</b>
+            <span class="body"><%= current_user.private_address.show_mobile %></span>
+          </td>
+        </tr>
+        <tr>
+          <td class="address">
+            <b>Fax</b>
+            <span class="body"><%= current_user.private_address.show_fax %></span>
+          </td>
+        </tr>
+        <tr>
+          <td class="address">
+            <b>住所</b>
+            <span class="body"><%= current_user.private_address.full_address %></span>
+          </td>
+        </tr>
+        <tr>
+          <td class="address">
+            <b>電話番号</b>
+            <span class="body"><%= current_user.work_address.show_phone %></span>
+          </td>
+        </tr>
+        <tr>
+          <td class="address">
+            <b>Mobile</b>
+            <span class="body"><%= current_user.work_address.show_mobile %></span>
+          </td>
+        </tr>
+        <tr>
+          <td class="address">
+            <b>Fax</b>
+            <span class="body"><%= current_user.work_address.show_fax %></span>
+          </td>
+        </tr>
+        <tr>
+          <td class="address">
+            <b>住所</b>
+            <span class="body"><%= current_user.work_address.full_address %></span>
+          </td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</div>

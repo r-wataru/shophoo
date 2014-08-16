@@ -1,39 +1,30 @@
-class Manager::OrganizationsController < Manager::BaseController
-  skip_before_filter :prepare_organization
-  
-  def show
-    @organization = current_user.managing_organizations.find(params[:id])
-  end
-  
+class UsersController < ApplicationController
   def edit
-    @organization = current_user.managing_organizations.find(params[:id])
-    @organization.build_organization_address unless @organization.organization_address
-    @organization.build_image unless @organization.image
+    current_user.build_image unless current_user.image
   end
   
   def update
-    @organization = current_user.managing_organizations.find(params[:id])
-    @organization.build_organization_address unless @organization.organization_address
-    d = @organization.image
+    current_user.build_image unless current_user.image
+    d = current_user.image
     if params[:uploaded_image_destroy].present?
       d.data = nil
       d.thumbnail_data = nil
       d.content_type = nil
       d.thumbnail_content_type = nil
     end
-    if @organization.update_attributes organization_params
-      d.save if params[:uploaded_image_destroy].present?
+    if current_user.update_attributes user_params
+      d.save
       flash.notice = "Complete"
-      redirect_to [ :manager, @organization ]
+      redirect_to current_user
     else
       flash.now.alert = "Invalid"
-      render action: :edti
+      render action: :edit
     end
   end
-  
-# GET
+
+  # GET
   def thumbnail
-    @organization = current_user.managing_organizations.find(params[:organization_id])
+    @user = User.find(params[:user_id])
     respond_to do |format|
       format.html
       format.png { send_thumbnail_data }
@@ -41,9 +32,10 @@ class Manager::OrganizationsController < Manager::BaseController
       format.gif { send_thumbnail_data }
     end
   end
-
+  
+  # GET
   def data
-    @organization = current_user.managing_organizations.find(params[:organization_id])
+    @user = User.find(params[:user_id])
     respond_to do |format|
       format.html
       format.png { send_data_data }
@@ -53,8 +45,8 @@ class Manager::OrganizationsController < Manager::BaseController
   end
   
   private
-  def organization_params
-    params.require(:organization).permit(
+  def user_params
+    params.require(:user).permit(
       :real_name,
       :screen_name,
       :birthday,
@@ -64,7 +56,28 @@ class Manager::OrganizationsController < Manager::BaseController
         'content_type',
         'id'
       ],  
-      organization_address_attributes: [
+      work_address_attributes: [
+        'country_code',
+        'zip_code',
+        'state',
+        'city',
+        'address1',
+        'address2',
+        'phone',
+        'phone1',
+        'phone2',
+        'phone3',
+        'mobile',
+        'mobile1',
+        'mobile2',
+        'mobile3',
+        'fax',
+        'fax1',
+        'fax2',
+        'fax3',
+        'id'
+      ],  
+      private_address_attributes: [
         'country_code',
         'zip_code',
         'state',
@@ -89,14 +102,14 @@ class Manager::OrganizationsController < Manager::BaseController
   end
 
   def send_thumbnail_data
-    send_data(@organization.image.thumbnail_data,
+    send_data(@user.image.thumbnail_data,
       :disposition => "inline",
-      :type => @organization.image.thumbnail_content_type)
+      :type => @user.image.thumbnail_content_type)
   end
 
   def send_data_data
-    send_data(@organization.image.data,
+    send_data(@user.image.data,
       :disposition => "inline",
-      :type => @organization.image.content_type)
+      :type => @user.image.content_type)
   end
 end

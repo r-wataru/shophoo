@@ -34,7 +34,7 @@
             <li><%= link_to "New Items", [ :new, :manager, @organization, :item ] %></li>
             <li><%= link_to "History", [ :manager, @organization, :histories ] %></li>
             <li><%= link_to "Setting", [ :edit, :manager, @organization ] %></li>
-            <li><%= link_to "User", :root %></li>
+            <li><%= link_to "User", current_user %></li>
           </ul>
         </li>
       </ul>
