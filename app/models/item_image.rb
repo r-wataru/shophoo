@@ -4,16 +4,20 @@
 #
 #  id                     :integer          not null, primary key
 #  item_id                :integer          not null
-#  thumbnail_data         :binary
+#  thumbnail_data         :binary(214748364
 #  thumbnail_content_type :string(255)
-#  data1                  :binary
+#  data1                  :binary(214748364
 #  data1_content_type     :string(255)
-#  data2                  :binary
+#  data2                  :binary(214748364
 #  data2_content_type     :string(255)
-#  data3                  :binary
+#  data3                  :binary(214748364
 #  data3_content_type     :string(255)
 #  created_at             :datetime
 #  updated_at             :datetime
+#
+# Indexes
+#
+#  index_item_images_on_item_id  (item_id)
 #
 
 class ItemImage < ActiveRecord::Base

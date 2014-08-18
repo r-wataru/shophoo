@@ -17,6 +17,10 @@
 #  created_at      :datetime
 #  updated_at      :datetime
 #
+# Indexes
+#
+#  index_accounts_on_screen_name  (screen_name) UNIQUE
+#
 
 class Account < ActiveRecord::Base
   include ActiveModel::ForbiddenAttributesProtection

@@ -44,6 +44,8 @@ ActiveRecord::Schema.define(version: 20140809150503) do
     t.string   "phone"
     t.string   "mobile"
     t.string   "fax"
+    t.string   "company_name"
+    t.text     "about"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

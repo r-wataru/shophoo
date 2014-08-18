@@ -57,6 +57,8 @@ class UsersController < ApplicationController
         'id'
       ],  
       work_address_attributes: [
+        'company_name',
+        'about',
         'country_code',
         'zip_code',
         'state',

@@ -4,12 +4,16 @@
 #
 #  id                     :integer          not null, primary key
 #  user_id                :integer          not null
-#  thumbnail_data         :binary
+#  thumbnail_data         :binary(214748364
 #  thumbnail_content_type :string(255)
-#  data                   :binary
+#  data                   :binary(214748364
 #  content_type           :string(255)
 #  created_at             :datetime
 #  updated_at             :datetime
+#
+# Indexes
+#
+#  index_user_images_on_user_id  (user_id)
 #
 
 class UserImage < ActiveRecord::Base

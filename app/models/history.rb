@@ -10,6 +10,10 @@
 #  created_at      :datetime
 #  updated_at      :datetime
 #
+# Indexes
+#
+#  index_histories_on_user_id_and_item_id  (user_id,item_id) UNIQUE
+#
 
 class History < ActiveRecord::Base
   belongs_to :user

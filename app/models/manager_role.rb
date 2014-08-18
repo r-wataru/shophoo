@@ -9,6 +9,10 @@
 #  created_at      :datetime
 #  updated_at      :datetime
 #
+# Indexes
+#
+#  index_manager_roles_on_user_id_and_organization_id  (user_id,organization_id) UNIQUE
+#
 
 class ManagerRole < ActiveRecord::Base
   belongs_to :user

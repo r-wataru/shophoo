@@ -14,6 +14,10 @@
 #  created_at      :datetime
 #  updated_at      :datetime
 #
+# Indexes
+#
+#  index_items_on_organization_id  (organization_id)
+#
 
 require 'securerandom'
 class Item < ActiveRecord::Base

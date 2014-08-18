@@ -15,6 +15,8 @@
 #  phone           :string(255)
 #  mobile          :string(255)
 #  fax             :string(255)
+#  company_name    :string(255)
+#  about           :text
 #  created_at      :datetime
 #  updated_at      :datetime
 #

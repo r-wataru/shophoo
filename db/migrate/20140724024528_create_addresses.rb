@@ -13,6 +13,8 @@ class CreateAddresses < ActiveRecord::Migration
       t.string :phone
       t.string :mobile
       t.string :fax
+      t.string :company_name
+      t.text :about
 
       t.timestamps
     end

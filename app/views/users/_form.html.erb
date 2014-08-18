@@ -78,6 +78,11 @@
 
 <%= f.fields_for :work_address do |address| %>
   <div>
+    <%= address.label :company_name %><br/>
+    <%= format_error_message(current_user.work_address, :company_name, address).html_safe %>
+    <%= address.text_field :company_name, class: "form-control" %>
+  </div>
+  <div>
     <%= address.label :country_name %><br/>
     <% hash = I18n.t(:countries) %>
     <%= address.select :country_code, hash.map{|key, value| [value.to_s, key]},
@@ -122,11 +127,15 @@
     <%= address.text_field :mobile2, maxlength: 4, class: "not_ime", style: "width: 100px; display: inline;background: #{current_user.errors.include?(:"work_address.mobile") ? 'yellow' : '' }", class: "form-control" %> -
     <%= address.text_field :mobile3, maxlength: 4, class: "not_ime", style: "width: 100px; display: inline;background: #{current_user.errors.include?(:"work_address.mobile") ? 'yellow' : '' }", class: "form-control" %>
   </div>
-  <div style="margin-bottom: 20px;">
+  <div>
     <%= address.label :fax %>(半角)<br/>
     <%= format_error_message(current_user.work_address, :fax, address).html_safe %>
     <%= address.text_field :fax1, maxlength: 4, style: "width: 100px; display: inline;background: #{current_user.errors.include?(:"work_address.fax") ? 'yellow' : '' }",  class: "form-control" %> -
     <%= address.text_field :fax2, maxlength: 4, style: "width: 100px; display: inline;background: #{current_user.errors.include?(:"work_address.fax") ? 'yellow' : '' }",  class: "form-control" %> -
     <%= address.text_field :fax3, maxlength: 4, style: "width: 100px; display: inline;background: #{current_user.errors.include?(:"work_address.fax") ? 'yellow' : '' }",  class: "form-control"  %>
+  </div>
+  <div style="margin-bottom: 20px;">
+    <%= address.label :about %>
+    <%= address.text_area :about, class: "form-control", size: "40x4" %>
   </div>
 <% end %>

@@ -4,12 +4,16 @@
 #
 #  id                     :integer          not null, primary key
 #  organization_id        :integer          not null
-#  thumbnail_data         :binary
+#  thumbnail_data         :binary(214748364
 #  thumbnail_content_type :string(255)
-#  data                   :binary
+#  data                   :binary(214748364
 #  content_type           :string(255)
 #  created_at             :datetime
 #  updated_at             :datetime
+#
+# Indexes
+#
+#  index_organization_images_on_organization_id  (organization_id)
 #
 
 class OrganizationImage < ActiveRecord::Base

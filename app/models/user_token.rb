@@ -8,6 +8,10 @@
 #  created_at :datetime
 #  updated_at :datetime
 #
+# Indexes
+#
+#  index_user_tokens_on_value  (value)
+#
 
 class UserToken < ActiveRecord::Base
   belongs_to :user
