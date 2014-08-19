@@ -27,7 +27,7 @@ class Manager::OrganizationsController < Manager::BaseController
       redirect_to [ :manager, @organization ]
     else
       flash.now.alert = "Invalid"
-      render action: :edti
+      render action: :edit
     end
   end
   
@@ -57,8 +57,6 @@ class Manager::OrganizationsController < Manager::BaseController
     params.require(:organization).permit(
       :real_name,
       :screen_name,
-      :birthday,
-      :sex,
       image_attributes: [
         'uploaded_image',
         'content_type',

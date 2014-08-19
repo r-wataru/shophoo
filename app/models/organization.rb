@@ -31,11 +31,9 @@ class Organization < Account
   has_many :owning_histories, class_name: "History"
   has_one :organization_address
   has_one :image, class_name: "OrganizationImage", dependent: :destroy
-  has_one :design, class_name: "DesignImage", dependent: :destroy
 
   accepts_nested_attributes_for :organization_address, allow_destroy: true
   accepts_nested_attributes_for :image, allow_destroy: true
-  accepts_nested_attributes_for :design, allow_destroy: true
 
   attr_accessor :owner_user
 
