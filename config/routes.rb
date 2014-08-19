@@ -6,7 +6,8 @@ Rails.application.routes.draw do
   resource :session, only: [ :new, :create, :destroy ]
   resources :users do
     member do
-      get :thumbnail, :data
+      get :thumbnail, :data, :edit_password
+      put :update_password
     end
   end
   resources :items do

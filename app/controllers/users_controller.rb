@@ -2,7 +2,7 @@ class UsersController < ApplicationController
   def edit
     current_user.build_image unless current_user.image
   end
-  
+
   def update
     current_user.build_image unless current_user.image
     d = current_user.image
@@ -22,6 +22,19 @@ class UsersController < ApplicationController
     end
   end
 
+  def edit_password
+  end
+
+  def update_password
+    current_user.setting_password = true
+    if current_user.update_attributes params.require(:user).permit(:password, :password_confirmation)
+      redirect_to current_user
+    else
+      flash.now.alert = "Invalid"
+      render action: :edit_password
+    end
+  end
+
   # GET
   def thumbnail
     @user = User.find(params[:user_id])
@@ -32,7 +45,7 @@ class UsersController < ApplicationController
       format.gif { send_thumbnail_data }
     end
   end
-  
+
   # GET
   def data
     @user = User.find(params[:user_id])
@@ -43,7 +56,7 @@ class UsersController < ApplicationController
       format.gif { send_data_data }
     end
   end
-  
+
   private
   def user_params
     params.require(:user).permit(
@@ -55,7 +68,7 @@ class UsersController < ApplicationController
         'uploaded_image',
         'content_type',
         'id'
-      ],  
+      ],
       work_address_attributes: [
         'company_name',
         'about',
@@ -78,7 +91,7 @@ class UsersController < ApplicationController
         'fax2',
         'fax3',
         'id'
-      ],  
+      ],
       private_address_attributes: [
         'country_code',
         'zip_code',
