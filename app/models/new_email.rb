@@ -45,7 +45,14 @@ class NewEmail < ActiveRecord::Base
     end
     :confirmed
   end
-  
+
+  def send_mail
+    user_token = UserToken.new
+    user_token.user = self.user
+    user_token.save
+    AccountMailer.add_email(self, user_token).deliver
+  end
+
   private
   def check_password_email
     if add_new_email.present?

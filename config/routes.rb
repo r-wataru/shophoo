@@ -3,11 +3,13 @@ Rails.application.routes.draw do
   get 'search', to: 'top#search'
   get 'reset_password/:token', to: "passwords#reset_password", as: "reset_password"
   post 'forgot_update_password/:token', to: "passwords#update_password", as: "forgot_update_password"
+  get 'users/add_emails/:token', to: "users#add_emails", as: "add_email"
   resource :session, only: [ :new, :create, :destroy ]
   resources :users do
     member do
-      get :thumbnail, :data, :edit_password
+      get :thumbnail, :data, :edit_password, :new_email
       put :update_password
+      post :create_email
     end
   end
   resources :items do

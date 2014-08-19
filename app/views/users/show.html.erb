@@ -6,7 +6,7 @@
     <div class="display">
       <table class="account_box">
         <tr>
-          <th rowspan="11" class="thumbnail_box">
+          <th rowspan="12" class="thumbnail_box">
           <div class="account_thumbnail">
             <% if current_user.image && current_user.image.thumbnail_data.present? %>
               <%= image_tag thumbnail_user_path(user_id: current_user.id, format: current_user.image.thumbnail_extension) %>
@@ -16,9 +16,24 @@
           </div>
         </th>
         <td class="address">
-          <b>団体名</b>
+          <b>ユーザー名</b>
           <span class="body"><%= current_user.screen_name %></span>
         </td>
+        </tr>
+        <tr>
+          <td class="address">
+            <b>E-mails</b>
+            <span class="body">
+              <ul>
+                <% current_user.emails.active.each do |email| %>
+                  <li>
+                    <%= email.address %>
+                  </li>
+                <% end %>
+              </ul>
+              <%= link_to "New Email", [ :new_email, current_user ] %>
+            </span>
+          </td>
         </tr>
         <tr>
           <td class="address">

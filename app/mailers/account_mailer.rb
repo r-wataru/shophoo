@@ -12,9 +12,7 @@ class AccountMailer < ActionMailer::Base
   def add_email(new_email, user_token)
     @user = new_email.user
     @user_token = user_token
-    main = @user.emails.find_by_main(true)
     to = []
-    to << main.address if main.present?
     to << new_email.address
     mail(to: to, subject: "Shophoo メールアドレスの追加")
   end

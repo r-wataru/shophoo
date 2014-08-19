@@ -35,6 +35,51 @@ class UsersController < ApplicationController
     end
   end
 
+  def new_email
+    @email = current_user.new_emails.new
+  end
+
+  def create_email
+    @email = current_user.new_emails.new params.require(:new_email).permit(:address)
+    if @email.valid?
+      if @email.save
+        @email.send_mail
+        redirect_to current_user,
+        notice: @email.address + " to Send."
+      else
+        flash.now.alert = "Invalid"
+        render action: :new_email
+      end
+    else
+      flash.now.alert = "Invalid"
+      render action: :new_email
+    end
+  end
+
+  def add_emails
+    @user_token = UserToken.find_by_value(params[:token])
+    if @user_token.blank?
+      raise NotFound
+    else
+      @user = @user_token.user
+      if @user.new_emails.last.address.present?
+        @user.emails << Email.new(address: @user.new_emails.last.address)
+        @user.new_emails.last.destroy
+        @user_token.destroy
+        flash.notice = "Complete"
+        redirect_to current_user
+      else
+        flash.notice = "Complete"
+        redirect_to current_user
+      end
+    end
+  end
+
+  def destroy_email
+    @email = current_user.emails.find(params[:id])
+    redirect_to :back
+  end
+
   # GET
   def thumbnail
     @user = User.find(params[:user_id])
