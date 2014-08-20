@@ -1,0 +1,33 @@
+<div class="jumbotron" style="display: inline-block; width: 100%;">
+  <div style="display: block; width: 50%; float: left;">
+    <h1>Start Shophoo!!</h1>
+    <p>
+      This is a demo version of the shopping site.<br/>
+      Please start use it to register below
+    </p>
+  </div>
+  <div style="display: block; width: 50%; float: right;">
+    <%= form_for @user, url: create_path, method: :post do |f| %>
+      <div style="display: block; margin-bottom: 10px; width: 300px;">
+        <%= format_error_message(@user, :screen_name, f).html_safe %>
+        <%= f.text_field :screen_name,  placeholder: "Screen Name", class: "not_ime form-control" %>
+      </div>
+      <div style="display: block; margin-bottom: 10px; width: 300px;">
+        <% if @user.errors.include?(:new_emails) %>
+          <p style="color: red;">
+          </p>
+        <% end %>
+        <%= f.text_field :new_email, placeholder: "E-mail", class: "not_ime form-control" %>
+      </div>
+      <div style="display: block; margin-bottom: 10px; width: 300px;">
+        <%= format_error_message(@user, :password, f).html_safe %>
+        <%= f.password_field :password, placeholder: "Password", class: "not_ime form-control" %>
+      </div>
+      <div style="display: block; margin-bottom: 10px; width: 300px;">
+        <%= format_error_message(@user, :password_confirmation, f).html_safe %>
+        <%= f.password_field :password_confirmation, placeholder: "Password Confirmation", class: "not_ime form-control" %>
+      </div>
+      <%= f.submit "Submit", class: "btn label-primary", style: "color: #fff; margin-bottom: 10px; width: 300px;" %>
+    <% end %>
+  </div>
+</div>
