@@ -17,6 +17,7 @@
           <p style="color: red;">
           </p>
         <% end %>
+        <%= format_error_message(@user, :new_email, f).html_safe %>
         <%= f.text_field :new_email, placeholder: "E-mail", class: "not_ime form-control" %>
       </div>
       <div style="display: block; margin-bottom: 10px; width: 300px;">

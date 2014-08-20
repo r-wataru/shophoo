@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   get 'search', to: 'top#search'
   post 'create', to: "top#create"
   get 'thanks', to: "top#thanks"
+  get 'mail_check', to: "top#mail_check"
   get 'reset_password/:token', to: "passwords#reset_password", as: "reset_password"
   post 'forgot_update_password/:token', to: "passwords#update_password", as: "forgot_update_password"
   get 'users/add_emails/:token', to: "users#add_emails", as: "add_email"

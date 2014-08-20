@@ -1,0 +1,14 @@
+Add Email
+
+New User
+--------------------------------------------------------
+Lets New User
+
+<%= mail_check_path(:token => @user_token.value, :only_path => false,
+  :protocol => Rails.env.production? ? "https" : "http") %>
+
+Expired
+<%= @user_token.created_at.advance(days: 1).strftime("%Y-%m-%d %H:%M") %>
+………………………………………………………………………
+Shophoo Management Secretariat
+Shophoooo.com

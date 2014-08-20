@@ -6,7 +6,7 @@ class AccountMailer < ActionMailer::Base
   def new_user(new_email, user_token)
     @user = new_email.user
     @user_token = user_token
-    mail(to: new_email.address, subject: "Shophoo パスワードの登録確定")
+    mail(to: new_email.address, subject: "Shophoo 登録確定")
   end
 
   def add_email(new_email, user_token)

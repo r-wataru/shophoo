@@ -11,13 +11,14 @@ class TopController < ApplicationController
   def create
     if request.post?
       @user = User.new user_params
+      @user.creating_user = true
       @user.setting_password = true
       if @user.save
         @user.send_token
         @user.emails << Email.new(address: @user.new_emails.last.address, main: true)
         redirect_to action: :thanks
       else
-        render action: :index
+        render "index", layout: "before_authentication"
       end
     else
       redirect_to :root
@@ -35,6 +36,21 @@ class TopController < ApplicationController
       render "search", layout: "application"
     else
       render "search", layout: "before_authentication"
+    end
+  end
+
+  def mail_check
+    @user_token = UserToken.find_by_value(params[:token])
+    @user = @user_token.user
+    if @user.checked == false
+      @user.checked = true
+      if @user.save
+        session[:current_user_id] = @user.id
+        @user.update_column(:logged_at, Time.current)
+        redirect_to [ :edit, current_user ]
+      end
+    else
+      raise NotFound
     end
   end
 

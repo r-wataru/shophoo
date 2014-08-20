@@ -49,7 +49,8 @@ class User < Account
   attr_accessor :creating_user
 
   validates :sex, inclusion: { in: %w{male female}, allow_nil: true, allow_blank: true }
-  validate :check_creating_user
+  validate :check_new_email
+  #validates :new_email, presence: {if: -> {creating_user == true}}, email: true
 
   scope :active, ->{ where(deleted_at: nil) }
 
@@ -154,11 +155,12 @@ class User < Account
   end
 
   private
-  # 新規作成時のパスワードのValidation
-  def check_creating_user
-    if creating_user.present?
-      if password.blank?
-        errors.add(:password, :blank)
+  def check_new_email
+    if creating_user
+      if new_email.present?
+        if Email.exists?(address: new_email)
+          errors.add(:new_email, :uniqueness)
+        end
       end
     end
   end
