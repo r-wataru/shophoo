@@ -50,14 +50,6 @@ ActiveRecord::Schema.define(version: 20140809150503) do
     t.datetime "updated_at"
   end
 
-  create_table "administrators", force: true do |t|
-    t.string   "login_name",                      null: false
-    t.string   "password_digest",                 null: false
-    t.boolean  "super_user",      default: false, null: false
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
   create_table "bookmark_folders", force: true do |t|
     t.integer  "user_id",    null: false
     t.text     "data"
