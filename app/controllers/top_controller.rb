@@ -1,6 +1,8 @@
 class TopController < ApplicationController
   def index
     if current_user
+      @items = ItemSearcher.new(query: params[:q]).search
+      @items = @items.paginate(page: params[:page], per_page: 10)
       render "index", layout: "application"
     else
       @user = User.new
