@@ -11,7 +11,7 @@ module ApplicationHelper
     messages.each do |message|
       text << content_tag(:p,
         translate_field_name(form, field) + ' ' + message,
-        style: "color: red;")
+        style: "color: red; font-size: 14px;")
     end
     text
   end

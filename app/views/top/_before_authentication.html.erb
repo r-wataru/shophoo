@@ -15,6 +15,7 @@
       <div style="display: block; margin-bottom: 10px; width: 300px;">
         <% if @user.errors.include?(:new_emails) %>
           <p style="color: red;">
+            <%= flash.now.alert = 'wrong_email' %>
           </p>
         <% end %>
         <%= format_error_message(@user, :new_email, f).html_safe %>

@@ -23,7 +23,6 @@ class NewEmail < ActiveRecord::Base
   token :confirmation
 
   validates :address, presence: true, email: true
-  validate :check_password_email
 
   validate do
     if address.present? && Email.where(address: address).exists?
@@ -51,14 +50,5 @@ class NewEmail < ActiveRecord::Base
     user_token.user = self.user
     user_token.save
     AccountMailer.add_email(self, user_token).deliver
-  end
-
-  private
-  def check_password_email
-    if add_new_email.present?
-      unless PasswordChecker.verify(self.user, password)
-        errors.add(:password, :wrong_password)
-      end
-    end
   end
 end
