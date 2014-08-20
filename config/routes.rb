@@ -46,4 +46,6 @@ Rails.application.routes.draw do
       resources :histories
     end
   end
+
+  get "*anything" => "top#not_found"
 end

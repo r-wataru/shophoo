@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+  skip_before_filter :authenticate_user, only: [ :thumbnail, :data ]
+
   def edit
     current_user.build_image unless current_user.image
   end

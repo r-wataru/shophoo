@@ -1,4 +1,6 @@
 class TopController < ApplicationController
+  skip_before_filter :authenticate_user
+
   def index
     if current_user
       @items = ItemSearcher.new(query: params[:q]).search
@@ -55,6 +57,10 @@ class TopController < ApplicationController
     else
       raise NotFound
     end
+  end
+
+  def not_found
+    raise NotFound
   end
 
   private

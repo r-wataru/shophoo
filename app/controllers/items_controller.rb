@@ -1,4 +1,6 @@
 class ItemsController < ApplicationController
+  skip_before_filter :authenticate_user, only: [ :thumbnail, :data1, :data2, :data3 ]
+
   # PUT
   def add_to_cart
     item = Item.listable.find(params[:id])

@@ -4,10 +4,12 @@
   </div>
   <div class="panel-body">
     <%= form_tag :session do %>
+      <%= content_tag :p, @error_title if @error_title %>
       <%= text_field_tag :login, "", class: "form-control", placeholder: "Login Name" %><br/>
       <%= password_field_tag :password, "", class: "form-control", placeholder: "Password" %><br/>
       <%= check_box_tag :remember_me, 1, false %>
       <%= label_tag :remember_me, "Save" %><br/>
+      <%= hidden_field_tag "from", "", value: @from %>
       <%= submit_tag "Sign In", class: "btn label-primary", style: "color: #fff; margin-bottom: 10px; width: 100%;" %><br/>
       <%= link_to "Lost Your Password?", :forgot_password %>
     <% end %>

@@ -1,9 +1,10 @@
 class SessionsController < ApplicationController
+  skip_before_filter :authenticate_user
   layout "before_authentication"
-  
+
   def new
   end
-  
+
   def create
     if user = PasswordAuthenticator.verify(params[:login], params[:password])
       if user && user.checked == true
@@ -22,7 +23,7 @@ class SessionsController < ApplicationController
       render action: :new
     end
   end
-  
+
   def destroy
     if current_user
       session.delete(:current_user_id)
