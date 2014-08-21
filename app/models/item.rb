@@ -38,6 +38,7 @@ class Item < ActiveRecord::Base
     format: { with: /\A[a-z0-9_+-]+\z/, allow_blank: true }
   validates :display_name, presence: true
   validates :price, presence: true, numericality: { allow_blank: true }
+  validate :check_price
 
   before_validation do
     if deleted_at.present? && !code_name.match(/\+[0-9a-f]{32}/)
@@ -52,5 +53,12 @@ class Item < ActiveRecord::Base
 
   def display_show
     listable? ? "Showing" : "Secret"
+  end
+
+  private
+  def check_price
+    if price.present? && price == 0
+      errors.add(:price, :price_up)
+    end
   end
 end

@@ -106,6 +106,19 @@ body {
   color: orange;
 }
 
+.checkout {
+  display: inline-block;
+  width: 100%;
+  background: #ccc;
+  padding: 20px;
+    span {
+      float: right;
+      font-size: 25px;
+      font-weight: bold;
+      margin-right: 20px;
+    }
+}
+
 #history {
   border-top: 1px solid #ccc;
   border-bottom: 1px solid #ccc;

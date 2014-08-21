@@ -3,6 +3,9 @@ class SessionsController < ApplicationController
   layout "before_authentication"
 
   def new
+    if current_user
+      redirect_to :root
+    end
   end
 
   def create
