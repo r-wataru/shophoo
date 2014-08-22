@@ -9,6 +9,6 @@ class ShoppingCartsController < ApplicationController
     if @shopping_cart.present?
       @shopping_cart.checkout
     end
-    redirect_to :back
+    redirect_to :histories
   end
 end
