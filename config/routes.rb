@@ -27,6 +27,7 @@ Rails.application.routes.draw do
   resource :shopping_cart, only: [ :show ] do
     put :checkout
   end
+  resource :bookmark, only: [ :show ]
   resources :histories, only: [ :index, :show ]
 
   resource :password, only: [] do

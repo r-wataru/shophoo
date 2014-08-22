@@ -11,6 +11,13 @@
       <% end %>
       <ul class="nav navbar-nav navbar-right">
         <li>
+          <%= link_to :bookmark do %>
+            <span class="glyphicon glyphicon-thumbs-up">
+              <span class="count"><%= current_user.bookmark_folder.number_of_items %></span>
+            </span>
+          <% end %>
+        </li>
+        <li>
           <%= link_to :shopping_cart do %>
             <span class="glyphicon glyphicon-shopping-cart">
               <span class="count"><%= current_user.shopping_cart.number_of_items %></span>

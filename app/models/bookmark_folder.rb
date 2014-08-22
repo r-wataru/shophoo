@@ -51,6 +51,20 @@ class BookmarkFolder < ActiveRecord::Base
     end
   end
 
+  def items
+    if data[:items].kind_of?(Array)
+      ids = data[:items].select { |item| item[:type] == 'Item' }.map { |item| item[:id] }
+      cart_items = []
+      ids.each do |id|
+        i = Item.listable.find(id)
+        cart_items << i
+      end
+      cart_items
+    else
+      0
+    end
+  end
+
   def present?
     number_of_items > 0
   end

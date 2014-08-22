@@ -9,6 +9,10 @@ class ItemsController < ApplicationController
       cart ||= current_user.create_shopping_cart
       cart.add_item(item)
       cart.save!
+      bookmark = current_user.bookmark_folder
+      bookmark ||= current_user.create_bookmark_folder
+      bookmark.remove_item(item)
+      bookmark.save!
     end
     redirect_to :back
   end
