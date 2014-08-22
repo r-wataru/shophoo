@@ -27,7 +27,7 @@ Rails.application.routes.draw do
   resource :shopping_cart, only: [ :show ] do
     put :checkout
   end
-  resource :history, only: [ :show ]
+  resources :histories, only: [ :index, :show ]
 
   resource :password, only: [] do
     get :forgot, :send_mail

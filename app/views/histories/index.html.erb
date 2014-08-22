@@ -1,0 +1,10 @@
+<div id="search">
+  <% @histories.each do |history| %>
+    <div class="form-group panel panel-default search_item">
+      <div class="panel-heading"><%= link_to history.item.display_name, [ history ] %></div>
+      <div class="panel-body">
+        <div class="thumbnail_image"></div>
+      </div>
+    </div>
+  <% end %>
+</div>

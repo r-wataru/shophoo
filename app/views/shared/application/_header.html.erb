@@ -40,7 +40,7 @@
             <li><%= link_to "Account", current_user %></li>
             <li><%= link_to "Setting", [ :edit, current_user ] %></li>
             <li><%= link_to "Setting Password", [ :edit_password, current_user ] %></li>
-            <li><%= link_to "My Items", :history %></li>
+            <li><%= link_to "My Items", :histories %></li>
             <li><%= link_to "New Organization", :new_organization %></li>
             <li class="divider"></li>
             <li><%= link_to "Logout", :session, method: :delete, data: { confirm: "Are You Sure?" } %></li>
