@@ -12,6 +12,8 @@ ja:
         password_confirmation: パスワード(確認)
         birthday: 生年月日
         sex: 性別
+      new_email:
+        address: メールアドレス
       organization:
         screen_name: スクリーンネーム
         real_name: 団体名

@@ -14,15 +14,15 @@ class SessionsController < ApplicationController
         session[:current_user_id] = user.id
         user.update_column(:logged_at, Time.current)
         if params[:from].present?
-          flash.notice = "Complete"
+          flash.notice = t(".complete")
           redirect_to params[:from]
         else
-          flash.notice = "Complete"
+          flash.notice = t(".complete")
           redirect_to :root
         end
       end
     else
-      flash.now.alert = "Login name or password is incorrect."
+      flash.now.alert = t(".invalid_login_or_password")
       render action: :new
     end
   end

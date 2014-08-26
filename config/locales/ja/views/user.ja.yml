@@ -11,7 +11,7 @@ ja:
       submit: 送信
     show:
       screen_name: ユーザー名
-      email: メールアドレス
+      emails: メールアドレス
       new_email: メールアドレス追加
       phone: 個人電話番号
       mobile: 個人携帯番号

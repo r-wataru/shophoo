@@ -1,6 +1,7 @@
 ja:
   organizations:
     new:
+      create: 新規作成
       title: 団体の新規作成
       en: （半角英数字）
       hankaku: （半角）

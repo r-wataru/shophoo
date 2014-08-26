@@ -4,7 +4,7 @@ class OrganizationsController < ApplicationController
     @organization.build_organization_address unless @organization.organization_address
     @organization.build_image unless @organization.image
   end
-  
+
   def create
     @organization = current_user.organizations.new organization_params
     @organization.build_organization_address unless @organization.organization_address
@@ -14,14 +14,14 @@ class OrganizationsController < ApplicationController
       owner = @organization.manager_roles.first
       owner.owner = true
       owner.save
-      flash.notice = "Complete"
+      flash.notice = t(".complete")
       redirect_to [ :manager, @organization ]
     else
-      flash.now.alert = "Invalid"
+      flash.now.alert = t(".invalid")
       render action: :new
     end
   end
-  
+
   private
   def organization_params
     params.require(:organization).permit(
@@ -30,7 +30,7 @@ class OrganizationsController < ApplicationController
       image_attributes: [
         'uploaded_image',
         'content_type'
-      ],  
+      ],
       organization_address_attributes: [
         'country_code',
         'zip_code',

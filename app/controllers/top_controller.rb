@@ -51,7 +51,7 @@ class TopController < ApplicationController
       if @user.save
         session[:current_user_id] = @user.id
         @user.update_column(:logged_at, Time.current)
-        flash.notice = "Complete"
+        flash.notice = t(".complete")
         redirect_to [ :edit, current_user ]
       end
     else

@@ -40,11 +40,14 @@ class PasswordsController < ApplicationController
       if @user.update_attributes params.require(:user).
           permit(:password, :password_confirmation)
         session[:current_user_id] = @user.id
+        flash.notice = t(".complete")
         redirect_to :root
       else
+        flash.now.alert = t(".invalid")
         render :reset_password, layout: "before_authentication"
       end
     else
+      flash.now.alert = t(".invalid")
       render :reset_password, layout: "before_authentication"
     end
   end

@@ -14,11 +14,11 @@ class Manager::ItemsController < Manager::BaseController
     @item.assign_attributes item_params
     if @item.valid?
       @item.save
-      flash.notice = "Complete"
+      flash.notice = t(".complete")
       redirect_to [ :manager, @organization, :items ]
     else
       @item.build_image unless @item.image
-      flash.now.alert = "Invalid!"
+      flash.now.alert = t(".invalid")
       render action: :new
     end
   end
@@ -55,11 +55,11 @@ class Manager::ItemsController < Manager::BaseController
     end
     if @item.valid?
       @item.save
-      flash.notice = "Complete"
+      flash.notice = t(".complete")
       redirect_to [ :manager, @organization, :items ]
     else
       @item.build_image unless @item.image
-      flash.now.alert = "Invalid!"
+      flash.now.alert = t(".invalid")
       render action: :edit
     end
   end
@@ -67,6 +67,7 @@ class Manager::ItemsController < Manager::BaseController
   def destroy
     @item = @organization.items.find(params[:id])
     @item.update_column(:deleted_at, Time.current)
+    flash.notice = t(".complete")
     redirect_to [ :manager, @organization, :items ]
   end
 

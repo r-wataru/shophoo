@@ -16,9 +16,14 @@ ja:
       price_up: は0円以上に設定してください。
       too_big_image: はデータが大きすぎます。(5MBまで)
       invalid_image: は登録できない型式です。
+      valid_email: Error
   activemodel:
     errors:
       <<: *errors
   activerecord:
     errors:
       <<: *errors
+  valid_email:
+    validations:
+      email:
+        invalid: が正しくありません。

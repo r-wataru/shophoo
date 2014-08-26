@@ -1,16 +1,16 @@
 class Manager::OrganizationsController < Manager::BaseController
   skip_before_filter :prepare_organization
-  
+
   def show
     @organization = current_user.managing_organizations.find(params[:id])
   end
-  
+
   def edit
     @organization = current_user.managing_organizations.find(params[:id])
     @organization.build_organization_address unless @organization.organization_address
     @organization.build_image unless @organization.image
   end
-  
+
   def update
     @organization = current_user.managing_organizations.find(params[:id])
     @organization.build_organization_address unless @organization.organization_address
@@ -23,14 +23,14 @@ class Manager::OrganizationsController < Manager::BaseController
     end
     if @organization.update_attributes organization_params
       d.save if params[:uploaded_image_destroy].present?
-      flash.notice = "Complete"
+      flash.notice = t(".complete")
       redirect_to [ :manager, @organization ]
     else
-      flash.now.alert = "Invalid"
+      flash.now.alert = t(".invalid")
       render action: :edit
     end
   end
-  
+
 # GET
   def thumbnail
     @organization = current_user.managing_organizations.find(params[:organization_id])
@@ -51,7 +51,7 @@ class Manager::OrganizationsController < Manager::BaseController
       format.gif { send_data_data }
     end
   end
-  
+
   private
   def organization_params
     params.require(:organization).permit(
@@ -61,7 +61,7 @@ class Manager::OrganizationsController < Manager::BaseController
         'uploaded_image',
         'content_type',
         'id'
-      ],  
+      ],
       organization_address_attributes: [
         'country_code',
         'zip_code',

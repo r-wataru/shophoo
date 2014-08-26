@@ -1,4 +1,43 @@
 ja:
   sessions:
-    invalid_email_address_or_password: メールアドレスまたはパスワードに誤りがあります。
-    invalid_login_or_password: ログイン名またはパスワードに誤りがあります。
+    create:
+      invalid_login_or_password: ログイン名またはパスワードに誤りがあります。
+      complete: ログインに成功しました。
+  users:
+    update:
+      complete: 更新しました。
+      invalid: 入力に誤りがあります。
+    update_password:
+      complete: 更新しました。
+      invalid: 入力に誤りがあります。
+    create_email:
+      to_send: にメールを送信しました。
+      invalid: 入力に誤りがあります。
+    add_emails:
+      complete: 完了しました。
+      complete_email: メールアドレスを追加しました。
+  top:
+    mail_check:
+      complete: 完了しました。
+  passwords:
+    update_password:
+      complete: 完了しました。
+      invalid: 更新できませんでした。
+  organizations:
+    create:
+      complete: 完了しました。
+      invalid: 入力に誤りがあります。
+  manager:
+    organizations:
+      update:
+        complete: 更新しました。
+        invalid: 入力に誤りがあります。
+    items:
+      update:
+        complete: 更新しました。
+        invalid: 入力に誤りがあります。
+      create:
+        complete: 更新しました。
+        invalid: 入力に誤りがあります。
+      destroy:
+        complete: 削除しました。

@@ -16,10 +16,10 @@ class UsersController < ApplicationController
     end
     if current_user.update_attributes user_params
       d.save
-      flash.notice = "Complete"
+      flash.notice = t(".complete")
       redirect_to current_user
     else
-      flash.now.alert = "Invalid"
+      flash.now.alert = t(".invalid")
       render action: :edit
     end
   end
@@ -30,9 +30,10 @@ class UsersController < ApplicationController
   def update_password
     current_user.setting_password = true
     if current_user.update_attributes params.require(:user).permit(:password, :password_confirmation)
+      flash.notice = t(".complete")
       redirect_to current_user
     else
-      flash.now.alert = "Invalid"
+      flash.now.alert = t(".invalid")
       render action: :edit_password
     end
   end
@@ -47,13 +48,13 @@ class UsersController < ApplicationController
       if @email.save
         @email.send_mail
         redirect_to current_user,
-        notice: @email.address + " to Send."
+        notice: @email.address + t(".to_send")
       else
-        flash.now.alert = "Invalid"
+        flash.now.alert = t(".invalid")
         render action: :new_email
       end
     else
-      flash.now.alert = "Invalid"
+      flash.now.alert = t(".invalid")
       render action: :new_email
     end
   end
@@ -68,10 +69,10 @@ class UsersController < ApplicationController
         @user.emails << Email.new(address: @user.new_emails.last.address)
         @user.new_emails.last.destroy
         @user_token.destroy
-        flash.notice = "Complete"
+        flash.notice = t(".complete_email")
         redirect_to current_user
       else
-        flash.notice = "Complete"
+        flash.notice = t(".complete")
         redirect_to current_user
       end
     end
