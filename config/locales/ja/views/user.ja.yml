@@ -1,0 +1,32 @@
+ja:
+  users:
+    edit:
+      title: 編集
+      update: 更新
+    edit_password:
+      title: パスワード修正
+      update: 更新
+    new_email:
+      title: メールアドレス追加
+      submit: 送信
+    show:
+      screen_name: ユーザー名
+      email: メールアドレス
+      new_email: メールアドレス追加
+      phone: 個人電話番号
+      mobile: 個人携帯番号
+      fax: 個人FAX
+      address: 個人住所
+      company_name: 勤め先名
+      work_phone: 勤め先電話番号
+      work_mobile: 勤め先携帯番号
+      work_fax: 勤め先FAX
+      work_address: 勤め先住所
+      work_about: About
+    form:
+      destroy: 削除
+      max: 最大5MBまで
+      en: 半角英数字
+      zenkaku: （全角）
+      hankaku: （半角）
+      hyphen: ハイフンなし半角数字

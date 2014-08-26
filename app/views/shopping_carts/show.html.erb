@@ -8,12 +8,12 @@
           <p>
             <% if current_user %>
               <% if current_user.bookmark_folder.try(:has_item?, item) %>
-                <%= link_to "Remove Favorite", [ :remove_from_bookmark, item], class: "btn btn-default", style: "width: 100%; margin:10px 0;", role: "button", method: :put %>
+                <%= link_to t(".remove_favorite"), [ :remove_from_bookmark, item], class: "btn btn-default", style: "width: 100%; margin:10px 0;", role: "button", method: :put %>
               <% else %>
-                <%= link_to "Favorite", [ :add_to_bookmark, item ], class: "btn btn-default", style: "width: 100%; margin:10px 0;", role: "button", method: :put %>
+                <%= link_to t(".add_favorite"), [ :add_to_bookmark, item ], class: "btn btn-default", style: "width: 100%; margin:10px 0;", role: "button", method: :put %>
               <% end %>
               <% if current_user.shopping_cart.try(:has_item?, item) %>
-                <%= link_to "Remove Cart", [ :remove_from_cart, item], class: "btn btn-warning", style: "width: 100%;", role: "button", method: :put %>
+                <%= link_to t(".remove_cart"), [ :remove_from_cart, item], class: "btn btn-warning", style: "width: 100%;", role: "button", method: :put %>
               <% end %>
             <% end %>
           </p>
@@ -21,12 +21,12 @@
       </div>
     <% end %>
   <% else %>
-    <p>Nothing Items</p>
+    <p><%= t(".nothing") %></p>
   <% end %>
 </div>
 <% if @shopping_cart.data.present? && @shopping_cart.items.count > 0 %>
   <div class="checkout">
-    <%= link_to "CHECK OUT", :checkout_shopping_cart, class: "btn btn-success", style: "float: right;", method: :put %>
+    <%= link_to t(".checkout"), :checkout_shopping_cart, class: "btn btn-success", style: "float: right;", method: :put %>
     <span>￥<%= current_user.shopping_cart.data[:items].inject(0){|sum,item| sum + item[:price]} %></span>
   </div>
 <% end %>

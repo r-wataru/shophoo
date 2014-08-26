@@ -16,49 +16,49 @@
             </div>
           </th>
           <td class="address">
-            <b>スクリーンネーム</b>
+            <b><%= t(".screen_name") %></b>
             <span class="body"><%= @history.user.screen_name %></span>
           </td>
         </tr>
         <tr>
           <td class="address">
-            <b>個人電話番号</b>
+            <b><%= t(".private_phone") %></b>
             <span class="body"><%= @history.user.private_address.show_phone %></span>
           </td>
         </tr>
         <tr>
           <td class="address">
-            <b>個人Mobile</b>
+            <b><%= t(".private_mobile") %></b>
             <span class="body"><%= @history.user.private_address.show_mobile %></span>
           </td>
         </tr>
         <tr>
           <td class="address">
-            <b>個人Fax</b>
+            <b><%= t(".private_fax") %></b>
             <span class="body"><%= @history.user.private_address.show_fax %></span>
           </td>
         </tr>
         <tr>
           <td class="address">
-            <b>個人住所</b>
+            <b><%= t(".private_address") %></b>
             <span class="body"><%= @history.user.private_address.full_address %></span>
           </td>
         </tr>
         <tr>
           <td class="address">
-            <b>会社電話番号</b>
+            <b><%= t(".work_phone") %></b>
             <span class="body"><%= @history.user.work_address.show_phone %></span>
           </td>
         </tr>
         <tr>
           <td class="address">
-            <b>会社Fax</b>
+            <b><%= t(".work_fax") %></b>
             <span class="body"><%= @history.user.work_address.show_fax %></span>
           </td>
         </tr>
         <tr>
           <td class="address">
-            <b>会社住所</b>
+            <b><%= t(".work_address") %></b>
             <span class="body"><%= @history.user.work_address.full_address %></span>
           </td>
         </tr>

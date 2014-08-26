@@ -1,6 +1,6 @@
 <div id="show" class="form-group panel panel-primary">
   <div class="panel-heading">
-    New Organization
+    <%= t(".title") %>
   </div>
   <div class="panel-body">
     <div class="form">
@@ -17,15 +17,15 @@
       </div>
       <%= f.fields_for :image do |img| %>
         <div>
-          <%= img.label :uploaded_image %> ( Max 5MB )<br/>
+          <%= img.label :uploaded_image %><%= t(".max") %><br/>
           <%= format_error_message(@organization.image, :uploaded_image, img).html_safe %>
           <%= img.file_field :uploaded_image %><br/>
-        </div>        
+        </div>
         <% if img.object.errors.empty? and f.object.errors.empty? and @organization.image.data.present? %>
           <div>
             <%= image_tag manager_organization_thumbnail_path(organization_id: @organization.id, format: @organization.image.thumbnail_extension),
               style: "max-width: 140px; max-height: 140px;"%><br/>
-            <%= label_tag :uploaded_image_destroy, "Destroy" %>
+            <%= label_tag :uploaded_image_destroy, t(".destroy") %>
             <%= check_box_tag :uploaded_image_destroy %><br/>
             <%= img.hidden_field :id %>
           </div>
@@ -40,46 +40,46 @@
             selected: @organization.organization_address.country_code.blank? ? "JP" : @organization.organization_address.country_code %>
         </div>
         <div>
-          <%= address.label :zip_code %><span>ハイフンなし半角数字</span><br/>
+          <%= address.label :zip_code %><span><%= t(".hyphen") %></span><br/>
           <%= format_error_message(@organization.organization_address, :zip_code, address).html_safe %>
           <%= address.text_field :zip_code, size: 7, maxlength: "7", class: "not_ime form-control" %>
         </div>
         <div>
-          <%= address.label :state %>(全角)<br/>
+          <%= address.label :state %><%= t(".zenkaku") %><br/>
           <%= format_error_message(@organization.organization_address, :state, address).html_safe %>
           <%= address.text_field :state, class: "form-control" %>
         </div>
         <div>
-          <%= address.label :city %>(全角)<br/>
+          <%= address.label :city %><%= t(".zenkaku") %><br/>
           <%= format_error_message(@organization.organization_address, :city, address).html_safe %>
           <%= address.text_field :city, class: "form-control" %>
         </div>
         <div>
-          <%= address.label :address1 %>(全角)<br/>
+          <%= address.label :address1 %><%= t(".zenkaku") %><br/>
           <%= format_error_message(@organization.organization_address, :address1, address).html_safe %>
           <%= address.text_field :address1, class: "form-control" %>
         </div>
         <div>
-          <%= address.label :address2 %>(全角)<br/>
+          <%= address.label :address2 %><%= t(".zenkaku") %><br/>
           <%= format_error_message(@organization.organization_address, :address2, address).html_safe %>
           <%= address.text_field :address2, class: "form-control" %>
         </div>
         <div>
-          <%= address.label :phone %>(半角)<br/>
+          <%= address.label :phone %><%= t(".hankaku") %><br/>
           <%= format_error_message(@organization.organization_address, :phone, address).html_safe %>
           <%= address.text_field :phone1, maxlength: 4, class: "not_ime", style: "width: 100px; display: inline; background: #{@organization.errors.include?(:"organization_address.phone") ? 'yellow' : '' }", class: "form-control" %> -
           <%= address.text_field :phone2, maxlength: 4, class: "not_ime", style: "width: 100px; display: inline; background: #{@organization.errors.include?(:"organization_address.phone") ? 'yellow' : '' }", class: "form-control" %> -
           <%= address.text_field :phone3, maxlength: 4, class: "not_ime", style: "width: 100px; display: inline; background: #{@organization.errors.include?(:"organization_address.phone") ? 'yellow' : '' }", class: "form-control" %>
         </div>
         <div>
-          <%= address.label :mobile %>(半角)<br/>
+          <%= address.label :mobile %><%= t(".hankaku") %><br/>
           <%= format_error_message(@organization.organization_address, :mobile, address).html_safe %>
           <%= address.text_field :mobile1, maxlength: 4, class: "not_ime", style: "width: 100px; display: inline;background: #{@organization.errors.include?(:"organization_address.mobile") ? 'yellow' : '' }", class: "form-control" %> -
           <%= address.text_field :mobile2, maxlength: 4, class: "not_ime", style: "width: 100px; display: inline;background: #{@organization.errors.include?(:"organization_address.mobile") ? 'yellow' : '' }", class: "form-control" %> -
           <%= address.text_field :mobile3, maxlength: 4, class: "not_ime", style: "width: 100px; display: inline;background: #{@organization.errors.include?(:"organization_address.mobile") ? 'yellow' : '' }", class: "form-control" %>
         </div>
         <div style="margin-bottom: 20px;">
-          <%= address.label :fax %>(半角)<br/>
+          <%= address.label :fax %><%= t(".hankaku") %><br/>
           <%= format_error_message(@organization.organization_address, :fax, address).html_safe %>
           <%= address.text_field :fax1, maxlength: 4, style: "width: 100px; display: inline;background: #{@organization.errors.include?(:"organization_address.fax") ? 'yellow' : '' }",  class: "form-control" %> -
           <%= address.text_field :fax2, maxlength: 4, style: "width: 100px; display: inline;background: #{@organization.errors.include?(:"organization_address.fax") ? 'yellow' : '' }",  class: "form-control" %> -

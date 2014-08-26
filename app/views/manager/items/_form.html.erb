@@ -1,6 +1,6 @@
 <%= f.fields_for :image do |img| %>
   <div>
-    <%= img.label :uploaded_image1 %> ( Max 5MB )<br/>
+    <%= img.label :uploaded_image1 %><%= t(".max") %><br/>
     <%= format_error_message(@item.image, :uploaded_image1, img).html_safe %>
     <%= img.file_field :uploaded_image1 %><br/>
   </div>
@@ -9,13 +9,13 @@
     <div>
       <%= image_tag data1_item_path(id: @item.id, format: @item.image.extension1),
         style: "max-width: 140px; max-height: 140px;"%><br/>
-      <%= label_tag :uploaded_image1_destroy, "Destroy" %>
+      <%= label_tag :uploaded_image1_destroy, t(".destroy") %>
       <%= check_box_tag :uploaded_image1_destroy %><br/>
       <%= img.hidden_field :id %>
     </div>
   <% end %>
   <div>
-    <%= img.label :uploaded_image2 %> ( Max 5MB )<br/>
+    <%= img.label :uploaded_image2 %><%= t(".max") %><br/>
     <%= format_error_message(@item.image, :uploaded_image2, img).html_safe %>
     <%= img.file_field :uploaded_image2 %><br/>
   </div>
@@ -23,13 +23,13 @@
     <div>
       <%= image_tag data2_item_path(id: @item.id, format: @item.image.extension2),
         style: "max-width: 140px; max-height: 140px;"%><br/>
-      <%= label_tag :uploaded_image2_destroy, "Destroy" %>
+      <%= label_tag :uploaded_image2_destroy, t(".destroy") %>
       <%= check_box_tag :uploaded_image2_destroy %><br/>
       <%= img.hidden_field :id %>
     </div>
   <% end %>
   <div>
-    <%= img.label :uploaded_image3 %> ( Max 5MB )<br/>
+    <%= img.label :uploaded_image3 %><%= t(".max") %><br/>
     <%= format_error_message(@item.image, :uploaded_image3, img).html_safe %>
     <%= img.file_field :uploaded_image3 %><br/>
   </div>
@@ -37,23 +37,32 @@
     <div>
       <%= image_tag data3_item_path(id: @item.id, format: @item.image.extension3),
         style: "max-width: 140px; max-height: 140px;"%><br/>
-      <%= label_tag :uploaded_image3_destroy, "Destroy" %>
+      <%= label_tag :uploaded_image3_destroy, t(".destroy") %>
       <%= check_box_tag :uploaded_image3_destroy %><br/>
       <%= img.hidden_field :id %>
     </div>
   <% end %>
 <% end %>
-<%= f.label :code_name %>
-<%= format_error_message(@item, :code_name, f).html_safe %>
-<%= f.text_field :code_name, class: "form-control" %>
-<%= f.label :display_name %>
-<%= format_error_message(@item, :display_name, f).html_safe %>
-<%= f.text_field :display_name, class: "form-control" %>
-<%= f.label :price %>
-<%= format_error_message(@item, :price, f).html_safe %>
-<%= f.text_field :price, class: "form-control" %>
-<%= f.label :listable %>
-<%= f.check_box :listable %><br/>
-<%= f.label :description %>
-<%= f.text_area :description, class: "form-control", size: "40x4" %>
-<br/>
+<p>
+  <%= f.label :code_name %><%= t(".en") %>
+  <%= format_error_message(@item, :code_name, f).html_safe %>
+  <%= f.text_field :code_name, class: "form-control" %>
+</p>
+<p>
+  <%= f.label :display_name %>
+  <%= format_error_message(@item, :display_name, f).html_safe %>
+  <%= f.text_field :display_name, class: "form-control" %>
+</p>
+<p>
+  <%= f.label :price %><%= t(".price") %>
+  <%= format_error_message(@item, :price, f).html_safe %>
+  <%= f.text_field :price, class: "form-control" %>
+</p>
+<p>
+  <%= f.label :listable %>
+  <%= f.check_box :listable %><br/>
+</p>
+<p>
+  <%= f.label :description %>
+  <%= f.text_area :description, class: "form-control", size: "40x4" %><br/>
+</p>

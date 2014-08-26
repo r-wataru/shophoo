@@ -1,5 +1,5 @@
 <div id="search">
-  <%= will_paginate(@items, inner_window: 1, outer_window: 1, next_label: "NEXT", previous_label: "PREVIOUS") %>
+  <%= will_paginate(@items, inner_window: 1, outer_window: 1, next_label: t(".next"), previous_label: t(".previous")) %>
   <% @items.each do |item| %>
     <div class="form-group panel panel-default search_item">
       <div class="panel-heading"><%= item.display_name %></div>
@@ -15,23 +15,23 @@
           <% if current_user %>
             <% unless current_user.managing_organizations.exists?(id: item.organization_id) %>
               <% if current_user.bookmark_folder.try(:has_item?, item) %>
-                <%= link_to "Remove Favorite", [ :remove_from_bookmark, item], class: "btn btn-default", style: "width: 100%; margin:10px 0;", role: "button", method: :put %>
+                <%= link_to t(".remove_favorite"), [ :remove_from_bookmark, item], class: "btn btn-default", style: "width: 100%; margin:10px 0;", role: "button", method: :put %>
               <% else %>
-                <%= link_to "Favorite", [ :add_to_bookmark, item ], class: "btn btn-default", style: "width: 100%; margin:10px 0;", role: "button", method: :put %>
+                <%= link_to t(".favorite"), [ :add_to_bookmark, item ], class: "btn btn-default", style: "width: 100%; margin:10px 0;", role: "button", method: :put %>
               <% end %>
               <% if current_user.shopping_cart.try(:has_item?, item) %>
-                <%= link_to "Remove Cart", [ :remove_from_cart, item], class: "btn btn-warning", style: "width: 100%;", role: "button", method: :put %>
+                <%= link_to t(".remove_cart"), [ :remove_from_cart, item], class: "btn btn-warning", style: "width: 100%;", role: "button", method: :put %>
               <% else %>
-                <%= link_to "Buy", [ :add_to_cart, item ], class: "btn btn-warning", style: "width: 100%;", role: "button", method: :put %>
+                <%= link_to t(".add_cart"), [ :add_to_cart, item ], class: "btn btn-warning", style: "width: 100%;", role: "button", method: :put %>
               <% end %>
             <% end %>
           <% else %>
-            <%= link_to "Favorite", [ :add_to_bookmark, item ], class: "btn btn-default", style: "width: 100%; margin:10px 0;", role: "button", method: :put %>
-            <%= link_to "Buy", [ :add_to_cart, item ], class: "btn btn-warning", style: "width: 100%;", role: "button", method: :put %>
+            <%= link_to t(".favorite"), [ :add_to_bookmark, item ], class: "btn btn-default", style: "width: 100%; margin:10px 0;", role: "button", method: :put %>
+            <%= link_to t(".add_cart"), [ :add_to_cart, item ], class: "btn btn-warning", style: "width: 100%;", role: "button", method: :put %>
           <% end %>
         </p>
       </div>
     </div>
   <% end %>
-  <%= will_paginate(@items, inner_window: 1, outer_window: 1, next_label: "NEXT", previous_label: "PREVIOUS") %>
+  <%= will_paginate(@items, inner_window: 1, outer_window: 1, next_label: t(".next"), previous_label: t(".previous")) %>
 </div>

@@ -1,6 +1,6 @@
 <div id="show" class="form-group panel panel-primary">
   <div class="panel-heading">
-    Add Email
+    <%= t(".title") %>
   </div>
   <div class="panel-body">
     <div class="form">
@@ -10,7 +10,7 @@
           <%= format_error_message(@email, :address, f).html_safe %>
           <%= f.text_field :address, class: "not_ime form-control" %>
         </div>
-        <%= f.submit "Update", class: "btn label-primary", style: "color: #fff; margin-bottom: 10px; width: 100%;" %>
+        <%= f.submit t(".submit"), class: "btn label-primary", style: "color: #fff; margin-bottom: 10px; width: 100%;" %>
       <% end %>
     </di
   </div>

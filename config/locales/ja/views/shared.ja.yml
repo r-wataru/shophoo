@@ -1,0 +1,27 @@
+ja:
+  shared:
+    application:
+      header:
+        confirm: ログアウトします。宜しいですか？
+        account: アカウント詳細
+        setting: アカウント修正
+        setting_password: パスワード更新
+        my_items: マイアイテム
+        new_organization: 団体の新規作成
+        logout: ログアウト
+        organizations: 団体一覧
+        search: 検索
+    before_authentication:
+      header:
+        login: ログイン
+        search: 検索
+    manager:
+      header:
+        organizations: 団体一覧
+        owning_items: 所有アイテム
+        new_item: アイテム新規作成
+        history: 販売履歴
+        setting: 団体の編集
+        search: 検索
+        user: ユーザーへ戻る
+

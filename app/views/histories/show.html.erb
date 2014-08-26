@@ -1,14 +1,10 @@
 <div id="form" class="form-group panel panel-primary">
   <div class="panel-heading">
-    Show <%= @history.item.display_name %>
+    <%= t(".show") %> <%= @history.item.display_name %>
   </div>
-
   <div class="panel-body">
-    </div>
-
     <%= @history.item.description %>
     <hr>
-
     <% if @history.item.image && @history.item.image.data1.present? %>
       <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
         <!-- Indicators -->
@@ -21,7 +17,6 @@
             <li data-target="#carousel-example-generic" data-slide-to="2"></li>
           <% end %>
         </ol>
-
         <div class="carousel-inner">
           <div class="item active">
             <%= image_tag data1_item_path(id: @history.item.id, format: @history.item.image.extension1) %>
@@ -37,7 +32,6 @@
             </div>
           <% end %>
         </div>
-
         <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
           <span class="glyphicon glyphicon-chevron-left"></span>
         </a>

@@ -10,7 +10,7 @@
     <%= form_for @user, url: create_path, method: :post do |f| %>
       <div style="display: block; margin-bottom: 10px; width: 300px;">
         <%= format_error_message(@user, :screen_name, f).html_safe %>
-        <%= f.text_field :screen_name,  placeholder: "Screen Name", class: "not_ime form-control" %>
+        <%= f.text_field :screen_name,  placeholder: t(".screen_name"), class: "not_ime form-control" %>
       </div>
       <div style="display: block; margin-bottom: 10px; width: 300px;">
         <% if @user.errors.include?(:new_emails) %>
@@ -19,17 +19,17 @@
           </p>
         <% end %>
         <%= format_error_message(@user, :new_email, f).html_safe %>
-        <%= f.text_field :new_email, placeholder: "E-mail", class: "not_ime form-control" %>
+        <%= f.text_field :new_email, value: "", placeholder: t(".email"), class: "not_ime form-control" %>
       </div>
       <div style="display: block; margin-bottom: 10px; width: 300px;">
         <%= format_error_message(@user, :password, f).html_safe %>
-        <%= f.password_field :password, placeholder: "Password", class: "not_ime form-control" %>
+        <%= f.password_field :password, value: "", placeholder: t(".password"), class: "not_ime form-control" %>
       </div>
       <div style="display: block; margin-bottom: 10px; width: 300px;">
         <%= format_error_message(@user, :password_confirmation, f).html_safe %>
-        <%= f.password_field :password_confirmation, placeholder: "Password Confirmation", class: "not_ime form-control" %>
+        <%= f.password_field :password_confirmation, placeholder: t(".password_confirmation"), class: "not_ime form-control" %>
       </div>
-      <%= f.submit "Submit", class: "btn label-primary", style: "color: #fff; margin-bottom: 10px; width: 300px;" %>
+      <%= f.submit t(".submit"), class: "btn label-primary", style: "color: #fff; margin-bottom: 10px; width: 300px;" %>
     <% end %>
   </div>
 </div>

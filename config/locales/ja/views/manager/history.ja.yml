@@ -1,0 +1,16 @@
+ja:
+  manager:
+    histories:
+      index:
+        title: 販売履歴
+        next: 次へ
+        previous: 前へ
+      show:
+        screen_name: スクリーンネーム
+        private_phone: 個人電話番号
+        private_mobile: 個人Mobile
+        private_fax: 個人Fax
+        private_address: 個人住所
+        work_phone: 会社電話番号
+        work_fax: 会社Fax
+        work_address: 会社住所

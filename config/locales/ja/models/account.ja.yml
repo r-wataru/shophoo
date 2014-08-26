@@ -1,0 +1,20 @@
+ja:
+  activerecord:
+    attributes:
+      user:
+        email: メールアドレス
+        new_emails: 新しいメールアドレス
+        screen_name: スクリーンネーム
+        real_name: ユーザー名
+        family_name: 姓
+        given_name: 名
+        password: パスワード
+        password_confirmation: パスワード(確認)
+        birthday: 生年月日
+        sex: 性別
+      organization:
+        screen_name: スクリーンネーム
+        real_name: 団体名
+      organization_image:
+        uploaded_image: 団体イメージ
+        

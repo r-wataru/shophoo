@@ -1,12 +1,12 @@
 <div id="session" class="form-group panel panel-primary">
   <div class="panel-heading">
-    Password Reset
+    <%= t(".title") %>
   </div>
   <div class="panel-body">
     <%= form_for PasswordResetter.new, url: [ :start_resetting, :password ], method: :post do |f| %>
       <%= format_error_message(PasswordResetter.new, :email, f).html_safe %>
-      <%= f.text_field :email,  class: "form-control", placeholder: "E-mail" %><br/>
-      <%= f.submit "Send Mail", class: "btn label-primary", style: "color: #fff; margin-bottom: 10px; width: 100%;" %><br/>
+      <%= f.text_field :email,  class: "form-control", placeholder: t(".mail") %><br/>
+      <%= f.submit t(".send"), class: "btn label-primary", style: "color: #fff; margin-bottom: 10px; width: 100%;" %><br/>
     <% end %>
   </div>
 </div>

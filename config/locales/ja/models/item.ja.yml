@@ -1,0 +1,9 @@
+ja:
+  activerecord:
+    attributes:
+      item:
+        code_name: コード名
+        display_name: 商品名
+        price: 値段
+        listable: 検索ページに表示させる
+        description: 説明

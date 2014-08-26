@@ -8,12 +8,12 @@
           <p>
             <% if current_user %>
               <% if current_user.bookmark_folder.try(:has_item?, item) %>
-                <%= link_to "Remove Favorite", [ :remove_from_bookmark, item], class: "btn btn-default", style: "width: 100%; margin:10px 0;", role: "button", method: :put %>
+                <%= link_to t(".remove_favorite"), [ :remove_from_bookmark, item], class: "btn btn-default", style: "width: 100%; margin:10px 0;", role: "button", method: :put %>
               <% end %>
               <% if current_user.shopping_cart.try(:has_item?, item) %>
-                <%= link_to "Remove Cart", [ :remove_from_cart, item], class: "btn btn-warning", style: "width: 100%;", role: "button", method: :put %>
+                <%= link_to t(".remove_cart"), [ :remove_from_cart, item], class: "btn btn-warning", style: "width: 100%;", role: "button", method: :put %>
               <% else %>
-                <%= link_to "Buy", [ :add_to_cart, item ], class: "btn btn-warning", style: "width: 100%;", role: "button", method: :put %>
+                <%= link_to t(".add_cart"), [ :add_to_cart, item ], class: "btn btn-warning", style: "width: 100%;", role: "button", method: :put %>
               <% end %>
             <% end %>
           </p>
@@ -21,6 +21,6 @@
       </div>
     <% end %>
   <% else %>
-    <p>Nothing Items</p>
+    <p><%= t(".nothing") %></p>
   <% end %>
 </div>

@@ -1,0 +1,7 @@
+ja:
+  bookmarks:
+    show:
+      nothing: お気に入りがありません。
+      remove_favorite: お気に入り削除
+      add_cart: カートに入れる
+      remove_cart: カートから出す

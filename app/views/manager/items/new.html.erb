@@ -1,12 +1,12 @@
 <div id="show" class="form-group panel panel-primary">
   <div class="panel-heading">
-    New Item
+    <%= t(".title") %>
   </div>
   <div class="panel-body">
     <div class="form">
       <%= form_for @item, url: [ :manager, @organization, @item ], method: :post do |f| %>
         <%= render 'form', f: f %>
-        <%= f.submit "Create", class: "btn label-primary", style: "color: #fff; margin-bottom: 10px; width: 100%;" %>
+        <%= f.submit t(".create"), class: "btn label-primary", style: "color: #fff; margin-bottom: 10px; width: 100%;" %>
       <% end %>
     </div>
   </div>

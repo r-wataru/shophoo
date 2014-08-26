@@ -1,0 +1,9 @@
+ja:
+  organizations:
+    new:
+      title: 団体の新規作成
+      en: （半角英数字）
+      hankaku: （半角）
+      zenkaku: （全角）
+      max: （最大5MBまで）
+      hyphen: （ハイフンなし半角数字）

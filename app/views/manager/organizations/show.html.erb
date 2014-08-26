@@ -16,31 +16,31 @@
           </div>
         </th>
         <td class="address">
-          <b>団体名</b>
+          <b><%= t(".screen_name") %></b>
           <span class="body"><%= @organization.screen_name %></span>
         </td>
         </tr>
         <tr>
           <td class="address">
-            <b>電話番号</b>
+            <b><%= t(".phone") %></b>
             <span class="body"><%= @organization.organization_address.show_phone %></span>
           </td>
         </tr>
         <tr>
           <td class="address">
-            <b>Mobile</b>
+            <b><%= t(".mobile") %></b>
             <span class="body"><%= @organization.organization_address.show_mobile %></span>
           </td>
         </tr>
         <tr>
           <td class="address">
-            <b>Fax</b>
+            <b><%= t(".fax") %></b>
             <span class="body"><%= @organization.organization_address.show_fax %></span>
           </td>
         </tr>
         <tr>
           <td class="address">
-            <b>住所</b>
+            <b><%= t(".address") %></b>
             <span class="body"><%= @organization.organization_address.full_address %></span>
           </td>
         </tr>

@@ -1,0 +1,46 @@
+ja:
+  activerecord:
+    attributes:
+      address:
+        city: 市区町村
+        state: 州 / 都道府県・地方
+        zip_code: 郵便番号
+        address1: 住所(1行目)
+        address2: 住所(2行目)
+        phone: 電話番号
+        mobile: 携帯番号
+        fax: FAX
+        company_name: 会社名・団体名
+        about: About
+      private_address:
+        city: 市区町村
+        state: 州 / 都道府県・地方
+        zip_code: 郵便番号
+        address1: 住所(1行目)
+        address2: 住所(2行目)
+        phone: 電話番号
+        mobile: 携帯番号
+        fax: FAX
+        about: About
+      work_address:
+        city: 市区町村
+        state: 州 / 都道府県・地方
+        zip_code: 郵便番号
+        address1: 住所(1行目)
+        address2: 住所(2行目)
+        phone: 電話番号
+        mobile: 携帯番号
+        fax: FAX
+        company_name: 勤め先会社名
+      organization_address:
+        country_name: 国
+        city: 市区町村
+        state: 州 / 都道府県・地方
+        zip_code: 郵便番号
+        address1: 住所(1行目)
+        address2: 住所(2行目)
+        phone: 電話番号
+        mobile: 携帯番号
+        fax: FAX
+        company_name: 会社名・団体名
+        about: About

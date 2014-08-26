@@ -1,0 +1,9 @@
+ja:
+  shopping_carts:
+    show:
+      nothing: アイテムがありません。
+      checkout: 購入確定
+      remove_favorite: お気に入り削除
+      add_favorite: お気に入り
+      favorite: お気に入り
+      remove_cart: カートから出す

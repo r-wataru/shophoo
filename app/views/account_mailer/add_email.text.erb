@@ -1,11 +1,11 @@
-Add Email
+<%= t(".description") %>
 
-New Email
+<%= t(".title") %>
 --------------------------------------------------------
+<%= t(".message") %>
 
 <%= add_email_path(token:  @user_token.value, only_path: false,
   :protocol => Rails.env.production? ? "https" : "http") %>
 
-………………………………………………………………………
-Shophoo Management Secretariat
-Shophoooo.com
+-------------------
+<%= t(".footer") %>

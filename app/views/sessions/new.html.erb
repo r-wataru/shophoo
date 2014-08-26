@@ -1,15 +1,15 @@
 <div id="session" class="form-group panel panel-primary">
   <div class="panel-heading">
-    Sign In
+    <%= t(".title") %>
   </div>
   <div class="panel-body">
     <%= form_tag :session do %>
       <%= content_tag :p, @error_title if @error_title %>
-      <%= text_field_tag :login, "", class: "form-control", placeholder: "Login Name" %><br/>
-      <%= password_field_tag :password, "", class: "form-control", placeholder: "Password" %><br/>
+      <%= text_field_tag :login, "", class: "form-control", placeholder: t(".login") %><br/>
+      <%= password_field_tag :password, "", class: "form-control", placeholder: t(".password") %><br/>
       <%= hidden_field_tag "from", "", value: @from %>
-      <%= submit_tag "Sign In", class: "btn label-primary", style: "color: #fff; margin-bottom: 10px; width: 100%;" %><br/>
-      <%= link_to "Lost Your Password?", :forgot_password %>
+      <%= submit_tag t(".sign_in"), class: "btn label-primary", style: "color: #fff; margin-bottom: 10px; width: 100%;" %><br/>
+      <%= link_to t(".lost"), :forgot_password %>
     <% end %>
   </div>
 </div>

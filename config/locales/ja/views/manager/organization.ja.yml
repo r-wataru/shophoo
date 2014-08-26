@@ -1,0 +1,18 @@
+ja:
+  manager:
+    organizations:
+      edit:
+        title: 編集
+        update: 更新
+        en: （英数字）
+        hyphen: ハイフンなし半角数字
+        zenkaku: （全角）
+        hankaku: （半角）
+        max: 最大5MBまで
+      show:
+        screen_name: 団体名
+        phone: 電話番号
+        mobile: 携帯番号
+        fax: FAX
+        address: 住所
+        destroy: 削除

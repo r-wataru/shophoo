@@ -1,0 +1,4 @@
+ja:
+  sessions:
+    invalid_email_address_or_password: メールアドレスまたはパスワードに誤りがあります。
+    invalid_login_or_password: ログイン名またはパスワードに誤りがあります。

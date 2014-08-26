@@ -1,6 +1,6 @@
-<h2>History</h2>
+<h2><%= t('.title') %></h2>
 <% if @histories.present? %>
-  <%= will_paginate(@histories, inner_window: 1, outer_window: 1, next_label: "NEXT", previous_label: "PREVIOUS") %>
+  <%= will_paginate(@histories, inner_window: 1, outer_window: 1, next_label: t(".next"), previous_label: t(".previous")) %>
   <% @histories.each do |history| %>
   <div id="history">
     <table>
@@ -27,7 +27,7 @@
     </table>
   </div>
   <% end %>
-  <%= will_paginate(@histories, inner_window: 1, outer_window: 1, next_label: "NEXT", previous_label: "PREVIOUS") %>
+  <%= will_paginate(@histories, inner_window: 1, outer_window: 1, next_label: t(".next"), previous_label: t(".previous")) %>
 <% else %>
   <p>No Item</p>
 <% end %>

@@ -1,0 +1,20 @@
+ja:
+  top:
+    before_authentication:
+      password: パスワード
+      password_confirmation: パスワード（確認）
+      screen_name: スクリーンネーム
+      display_name: ユーザー名
+      email: メールアドレス
+      submit: 送信
+    thanks:
+      title: Thanks
+      complete: メールを送信しました。
+      message: メール内のURLをクリックして登録を完了して下さい。
+    search:
+      add_cart: カートに入れる
+      favorite: お気に入り
+      next: 次へ
+      previous: 前へ
+      remove_cart: カートから出す
+      remove_favorite: お気に入り削除

@@ -1,5 +1,5 @@
 <div id="search">
-  <%= will_paginate(@items, inner_window: 1, outer_window: 1, next_label: "NEXT", previous_label: "PREVIOUS") %>
+  <%= will_paginate(@items, inner_window: 1, outer_window: 1, next_label: t(".next"), previous_label: t(".previous")) %>
   <% @items.each do |item| %>
     <div class="form-group panel panel-default search_item">
       <div class="panel-heading"><%= link_to item.display_name, [ :manager, @organization, item ] %></div>
@@ -14,5 +14,5 @@
       </div>
     </div>
   <% end %>
-  <%= will_paginate(@items, inner_window: 1, outer_window: 1, next_label: "NEXT", previous_label: "PREVIOUS") %>
+  <%= will_paginate(@items, inner_window: 1, outer_window: 1, next_label: t(".next"), previous_label: t('.previous')) %>
 </div>

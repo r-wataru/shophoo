@@ -1,3 +1,24 @@
 ja:
   account_mailer:
     forget_password:
+      footer: |+
+        Shophoo 事務局
+        shophoo.com
+      title: パスワード再設定
+      description: このメールでshophoo.comのパスワード再設定を行います。
+      message: 下記のURLをクリックして設定を行ってください。
+    new_user:
+      footer: |+
+        Shophoo 事務局
+        shophoo.com
+      title: メールアドレス認証
+      description: このメールでメールアドレスの認証を行います。
+      message: 下記のURLをクリックして登録を完了させてください。
+      expired: 有効期間
+    add_email:
+      footer: |+
+        Shophoo 事務局
+        shophoo.com
+      title: メールアドレスの追加
+      descripton: このメールでメールアドレスの認証を行います。
+      message: 下記のURLをクリックして登録を完了させてください。

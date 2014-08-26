@@ -1,0 +1,8 @@
+ja:
+  sessions:
+    new:
+      title: ログイン
+      login: ログイン名またメールアドレス
+      password: パスワード
+      sign_in: ログイン
+      lost: パスワードをお忘れですか？
