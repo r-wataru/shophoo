@@ -12,6 +12,8 @@ ja:
         password_confirmation: パスワード(確認)
         birthday: 生年月日
         sex: 性別
+      user_image:
+        uploaded_image: ユーザーイメージ
       new_email:
         address: メールアドレス
       organization:

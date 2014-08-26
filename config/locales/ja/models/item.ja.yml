@@ -7,3 +7,7 @@ ja:
         price: 値段
         listable: 検索ページに表示させる
         description: 説明
+      item_image:
+        uploaded_image1: アイテム画像1
+        uploaded_image2: アイテム画像2
+        uploaded_image3: アイテム画像3

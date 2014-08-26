@@ -13,24 +13,26 @@ ja:
         company_name: 会社名・団体名
         about: About
       private_address:
-        city: 市区町村
-        state: 州 / 都道府県・地方
-        zip_code: 郵便番号
-        address1: 住所(1行目)
-        address2: 住所(2行目)
-        phone: 電話番号
-        mobile: 携帯番号
-        fax: FAX
+        country_name: 国（個人）
+        city: 市区町村（個人）
+        state: 州 / 都道府県・地方（個人）
+        zip_code: 郵便番号（個人）
+        address1: 住所(1行目)（個人）
+        address2: 住所(2行目)（個人）
+        phone: 電話番号（個人）
+        mobile: 携帯番号（個人）
+        fax: FAX（個人）
         about: About
       work_address:
-        city: 市区町村
-        state: 州 / 都道府県・地方
-        zip_code: 郵便番号
-        address1: 住所(1行目)
-        address2: 住所(2行目)
-        phone: 電話番号
-        mobile: 携帯番号
-        fax: FAX
+        country_name: 国（勤め先）
+        city: 市区町村（勤め先）
+        state: 州 / 都道府県・地方（勤め先）
+        zip_code: 郵便番号（勤め先）
+        address1: 住所(1行目)（勤め先）
+        address2: 住所(2行目)（勤め先）
+        phone: 電話番号（勤め先）
+        mobile: 携帯番号（勤め先）
+        fax: FAX（勤め先）
         company_name: 勤め先会社名
       organization_address:
         country_name: 国
