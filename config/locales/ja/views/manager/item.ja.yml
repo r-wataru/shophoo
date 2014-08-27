@@ -17,8 +17,7 @@ ja:
         destroy: 削除
         confirm: 本当に削除しても宜しいですか？
       form:
-        max: 最大5MBまで
+        max: （最大5MBまで）
         destroy: 削除
         en: （半角英数字）
         price: （半角数字）
-        

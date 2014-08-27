@@ -5,10 +5,10 @@ ja:
         title: 編集
         update: 更新
         en: （英数字）
-        hyphen: ハイフンなし半角数字
+        hyphen: （ハイフンなし半角数字）
         zenkaku: （全角）
         hankaku: （半角）
-        max: 最大5MBまで
+        max: （最大5MBまで）
       show:
         screen_name: 団体名
         phone: 電話番号

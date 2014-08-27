@@ -25,8 +25,8 @@ ja:
       work_about: About
     form:
       destroy: 削除
-      max: 最大5MBまで
-      en: 半角英数字
+      max: （最大5MBまで）
+      en: （半角英数字）
       zenkaku: （全角）
       hankaku: （半角）
-      hyphen: ハイフンなし半角数字
+      hyphen: （ハイフンなし半角数字）

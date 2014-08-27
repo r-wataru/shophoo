@@ -111,12 +111,12 @@ body {
   width: 100%;
   background: #ccc;
   padding: 20px;
-    span {
-      float: right;
-      font-size: 25px;
-      font-weight: bold;
-      margin-right: 20px;
-    }
+  span {
+    float: right;
+    font-size: 25px;
+    font-weight: bold;
+    margin-right: 20px;
+  }
 }
 
 #history {
@@ -133,5 +133,12 @@ body {
       font-size: 26px;
       font-weight: bold;
     }
+  }
+}
+
+.field_with_errors {
+  display: inline-block;
+  input {
+    background: yellow;
   }
 }

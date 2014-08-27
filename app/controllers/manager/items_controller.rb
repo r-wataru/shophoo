@@ -34,6 +34,7 @@ class Manager::ItemsController < Manager::BaseController
 
   def update
     @item = @organization.items.find(params[:id])
+    @item.build_image unless @item.image
     @item.assign_attributes item_params
     if params[:uploaded_image1_destroy].present?
       d = @item.image
@@ -58,7 +59,6 @@ class Manager::ItemsController < Manager::BaseController
       flash.notice = t(".complete")
       redirect_to [ :manager, @organization, :items ]
     else
-      @item.build_image unless @item.image
       flash.now.alert = t(".invalid")
       render action: :edit
     end

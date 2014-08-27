@@ -13,6 +13,7 @@ class Manager::OrganizationsController < Manager::BaseController
 
   def update
     @organization = current_user.managing_organizations.find(params[:id])
+    @organization.build_image unless @organization.image
     @organization.build_organization_address unless @organization.organization_address
     d = @organization.image
     if params[:uploaded_image_destroy].present?
