@@ -49,4 +49,4 @@ $ bundle exec rspec spec
 
 * [Windows](http://www.oiax.jp/rails/zakkan/rails_3_1_installation_on_windows.html)
 * [Mac](http://www.oiax.jp/rails/zakkan/rails_3_1_installation_on_macosx.html)
-* [Ubuntu])http://www.oiax.jp/rails/zakkan/rails_3_2_installation_on_ubuntu.html)
+* [Ubuntu](http://www.oiax.jp/rails/zakkan/rails_3_2_installation_on_ubuntu.html)
