@@ -9,3 +9,8 @@
 * Rails 4.1.1
 
 * Mysql2
+
+```sh
+$ vagrant plugin install vagrant-berkshelf --plugin-version '>=2.0.1'
+$ vagrant plugin install vagrant-vbguest
+```
