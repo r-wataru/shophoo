@@ -41,7 +41,7 @@ class UserImage < ActiveRecord::Base
   end
 
   def extension
-    IMAGE_TYPES[data_content_type]
+    IMAGE_TYPES[content_type]
   end
 
   def uploaded_thumbnail=(thumbnail)
@@ -53,7 +53,7 @@ class UserImage < ActiveRecord::Base
   def uploaded_image=(image)
     self.content_type = convert_content_type(image.content_type)
     self.data = image.read
-    @uploaded_image1 = image
+    @uploaded_image = image
   end
 
   def check_image
@@ -61,7 +61,7 @@ class UserImage < ActiveRecord::Base
       if data.size > 20.megabytes
         errors.add(:uploaded_image, :too_big_image)
       end
-      unless IMAGE_TYPES.has_key?(data_content_type)
+      unless IMAGE_TYPES.has_key?(content_type)
         errors.add(:uploaded_image, :invalid_image)
       end
     end
