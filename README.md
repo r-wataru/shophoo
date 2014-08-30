@@ -9,3 +9,8 @@
 * Rails 4.1.1
 
 * Mysql2
+
+```sh
+$ git clone 
+$ bundle install
+```
