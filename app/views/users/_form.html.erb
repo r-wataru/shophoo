@@ -1,17 +1,16 @@
-<div>
+<div class="form_box">
   <%= f.label :screen_name %><%= t(".en") %><br/>
   <%= format_error_message(current_user, :screen_name, f).html_safe %>
   <%= f.text_field :screen_name, class: "not_ime form-control" %>
 </div>
-
 <%= f.fields_for :image do |img| %>
-  <div>
+  <div class="form_box">
     <%= img.label :uploaded_image %><%= t(".max") %><br/>
     <%= format_error_message(current_user.image, :uploaded_image, img).html_safe %>
     <%= img.file_field :uploaded_image %><br/>
   </div>
   <% if img.object.errors.empty? and f.object.errors.empty? and current_user.image.data.present? %>
-    <div>
+    <div class="form_box">
       <%= image_tag thumbnail_user_path(user_id: current_user.id, format: current_user.image.thumbnail_extension),
         style: "max-width: 140px; max-height: 140px;"%><br/>
       <%= label_tag :uploaded_image_destroy, t(".destroy") %>
@@ -22,52 +21,52 @@
 <% end %>
 
 <%= f.fields_for :private_address do |address| %>
-  <div>
+  <div class="form_box">
     <%= address.label :country_name %><br/>
     <% hash = I18n.t(:countries) %>
     <%= address.select :country_code, hash.map{|key, value| [value.to_s, key]},
       selected: current_user.private_address.country_code.blank? ? "JP" : current_user.private_address.country_code %>
   </div>
-  <div>
+  <div class="form_box">
     <%= address.label :zip_code %><span><%= t(".hyphen") %></span><br/>
     <%= format_error_message(current_user.private_address, :zip_code, address).html_safe %>
     <%= address.text_field :zip_code, size: 7, maxlength: "7", class: "not_ime form-control" %>
   </div>
-  <div>
+  <div class="form_box">
     <%= address.label :state %><%= t(".zenkaku") %><br/>
     <%= format_error_message(current_user.private_address, :state, address).html_safe %>
     <%= address.text_field :state, class: "form-control" %>
   </div>
-  <div>
+  <div class="form_box">
     <%= address.label :city %><%= t(".zenkaku") %><br/>
     <%= format_error_message(current_user.private_address, :city, address).html_safe %>
     <%= address.text_field :city, class: "form-control" %>
   </div>
-  <div>
+  <div class="form_box">
     <%= address.label :address1 %><%= t(".zenkaku") %><br/>
     <%= format_error_message(current_user.private_address, :address1, address).html_safe %>
     <%= address.text_field :address1, class: "form-control" %>
   </div>
-  <div>
+  <div class="form_box">
     <%= address.label :address2 %><%= t(".zenkaku") %><br/>
     <%= format_error_message(current_user.private_address, :address2, address).html_safe %>
     <%= address.text_field :address2, class: "form-control" %>
   </div>
-  <div>
+  <div class="form_box">
     <%= address.label :phone %><%= t(".hankaku") %><br/>
     <%= format_error_message(current_user.private_address, :phone, address).html_safe %>
     <%= address.text_field :phone1, maxlength: 4, class: "not_ime", style: "width: 100px; display: inline; background: #{current_user.errors.include?(:"private_address.phone") ? 'yellow' : '' }", class: "form-control" %> -
     <%= address.text_field :phone2, maxlength: 4, class: "not_ime", style: "width: 100px; display: inline; background: #{current_user.errors.include?(:"private_address.phone") ? 'yellow' : '' }", class: "form-control" %> -
     <%= address.text_field :phone3, maxlength: 4, class: "not_ime", style: "width: 100px; display: inline; background: #{current_user.errors.include?(:"private_address.phone") ? 'yellow' : '' }", class: "form-control" %>
   </div>
-  <div>
+  <div class="form_box">
     <%= address.label :mobile %><%= t(".hankaku") %><br/>
     <%= format_error_message(current_user.private_address, :mobile, address).html_safe %>
     <%= address.text_field :mobile1, maxlength: 4, class: "not_ime", style: "width: 100px; display: inline;background: #{current_user.errors.include?(:"private_address.mobile") ? 'yellow' : '' }", class: "form-control" %> -
     <%= address.text_field :mobile2, maxlength: 4, class: "not_ime", style: "width: 100px; display: inline;background: #{current_user.errors.include?(:"private_address.mobile") ? 'yellow' : '' }", class: "form-control" %> -
     <%= address.text_field :mobile3, maxlength: 4, class: "not_ime", style: "width: 100px; display: inline;background: #{current_user.errors.include?(:"private_address.mobile") ? 'yellow' : '' }", class: "form-control" %>
   </div>
-  <div style="margin-bottom: 20px;">
+  <div class="form_box" style="margin-bottom: 20px;">
     <%= address.label :fax %><%= t(".hankaku") %><br/>
     <%= format_error_message(current_user.private_address, :fax, address).html_safe %>
     <%= address.text_field :fax1, maxlength: 4, style: "width: 100px; display: inline;background: #{current_user.errors.include?(:"private_address.fax") ? 'yellow' : '' }",  class: "form-control" %> -
@@ -77,64 +76,64 @@
 <% end %>
 
 <%= f.fields_for :work_address do |address| %>
-  <div>
+  <div class="form_box">
     <%= address.label :company_name %><br/>
     <%= format_error_message(current_user.work_address, :company_name, address).html_safe %>
     <%= address.text_field :company_name, class: "form-control" %>
   </div>
-  <div>
+  <div class="form_box">
     <%= address.label :country_name %><br/>
     <% hash = I18n.t(:countries) %>
     <%= address.select :country_code, hash.map{|key, value| [value.to_s, key]},
       selected: current_user.work_address.country_code.blank? ? "JP" : current_user.work_address.country_code %>
   </div>
-  <div>
+  <div class="form_box">
     <%= address.label :zip_code %><span><%= t(".hyphen") %></span><br/>
     <%= format_error_message(current_user.work_address, :zip_code, address).html_safe %>
     <%= address.text_field :zip_code, size: 7, maxlength: "7", class: "not_ime form-control" %>
   </div>
-  <div>
+  <div class="form_box">
     <%= address.label :state %><%= t(".zenkaku") %><br/>
     <%= format_error_message(current_user.work_address, :state, address).html_safe %>
     <%= address.text_field :state, class: "form-control" %>
   </div>
-  <div>
+  <div class="form_box">
     <%= address.label :city %><%= t(".zenkaku") %><br/>
     <%= format_error_message(current_user.work_address, :city, address).html_safe %>
     <%= address.text_field :city, class: "form-control" %>
   </div>
-  <div>
+  <div class="form_box">
     <%= address.label :address1 %><%= t(".zenkaku") %><br/>
     <%= format_error_message(current_user.work_address, :address1, address).html_safe %>
     <%= address.text_field :address1, class: "form-control" %>
   </div>
-  <div>
+  <div class="form_box">
     <%= address.label :address2 %><%= t(".zenkaku") %><br/>
     <%= format_error_message(current_user.work_address, :address2, address).html_safe %>
     <%= address.text_field :address2, class: "form-control" %>
   </div>
-  <div>
+  <div class="form_box">
     <%= address.label :phone %><%= t(".hankaku") %><br/>
     <%= format_error_message(current_user.work_address, :phone, address).html_safe %>
     <%= address.text_field :phone1, maxlength: 4, class: "not_ime", style: "width: 100px; display: inline; background: #{current_user.errors.include?(:"work_address.phone") ? 'yellow' : '' }", class: "form-control" %> -
     <%= address.text_field :phone2, maxlength: 4, class: "not_ime", style: "width: 100px; display: inline; background: #{current_user.errors.include?(:"work_address.phone") ? 'yellow' : '' }", class: "form-control" %> -
     <%= address.text_field :phone3, maxlength: 4, class: "not_ime", style: "width: 100px; display: inline; background: #{current_user.errors.include?(:"work_address.phone") ? 'yellow' : '' }", class: "form-control" %>
   </div>
-  <div>
+  <div class="form_box">
     <%= address.label :mobile %><%= t(".hankaku") %><br/>
     <%= format_error_message(current_user.work_address, :mobile, address).html_safe %>
     <%= address.text_field :mobile1, maxlength: 4, class: "not_ime", style: "width: 100px; display: inline;background: #{current_user.errors.include?(:"work_address.mobile") ? 'yellow' : '' }", class: "form-control" %> -
     <%= address.text_field :mobile2, maxlength: 4, class: "not_ime", style: "width: 100px; display: inline;background: #{current_user.errors.include?(:"work_address.mobile") ? 'yellow' : '' }", class: "form-control" %> -
     <%= address.text_field :mobile3, maxlength: 4, class: "not_ime", style: "width: 100px; display: inline;background: #{current_user.errors.include?(:"work_address.mobile") ? 'yellow' : '' }", class: "form-control" %>
   </div>
-  <div>
+  <div class="form_box">
     <%= address.label :fax %><%= t(".hankaku") %><br/>
     <%= format_error_message(current_user.work_address, :fax, address).html_safe %>
     <%= address.text_field :fax1, maxlength: 4, style: "width: 100px; display: inline;background: #{current_user.errors.include?(:"work_address.fax") ? 'yellow' : '' }",  class: "form-control" %> -
     <%= address.text_field :fax2, maxlength: 4, style: "width: 100px; display: inline;background: #{current_user.errors.include?(:"work_address.fax") ? 'yellow' : '' }",  class: "form-control" %> -
     <%= address.text_field :fax3, maxlength: 4, style: "width: 100px; display: inline;background: #{current_user.errors.include?(:"work_address.fax") ? 'yellow' : '' }",  class: "form-control"  %>
   </div>
-  <div style="margin-bottom: 20px;">
+  <div  class="form_box" style="margin-bottom: 20px;">
     <%= address.label :about %>
     <%= address.text_area :about, class: "form-control", size: "40x4" %>
   </div>
