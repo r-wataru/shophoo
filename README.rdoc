@@ -9,3 +9,7 @@
 * Rails 4.1.1
 
 * Mysql2
+
+<p style="background: black; color: green;">
+$ git clone <br/>
+</p>
