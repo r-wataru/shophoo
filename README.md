@@ -10,7 +10,19 @@
 
 * Mysql2
 
+セットアップ
+
 ```sh
-$ git clone 
+$ git clone git@github.com:r-wataru/shophoo.git
 $ bundle install
+$ bundle exec rake db:migrate
+$ bundle exec rake db:seed
+$ rails s
+```
+
+テスト
+
+```
+$ rake db:migrate RAILS_ENV=test
+$ bundle exec rspec spec
 ```
