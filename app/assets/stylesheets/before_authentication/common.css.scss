@@ -55,3 +55,15 @@ body {
   font-weight: bold;
   color: orange;
 }
+
+#not_current_user {
+  display: inline-block;
+  padding: 5px 5px 10px 5px;
+  .not_current_user_overlay {
+    width: 100%;
+    background: black;
+    height: 100px;
+    display: block;
+    margin-top: -90px;
+  }
+}
